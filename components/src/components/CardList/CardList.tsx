@@ -16,11 +16,14 @@ type CardProps = {
 
 type CardListProps = {
   cards: CardProps[];
+  isLoading: boolean;
 };
 
 export default class CardList extends Component<CardListProps> {
   render() {
-    return (
+    return this.props.isLoading ? (
+      <div>Loading</div>
+    ) : this.props.cards.length ? (
       <div>
         <ul className="films">
           {this.props.cards.map((item: CardProps, index) => (
@@ -35,6 +38,8 @@ export default class CardList extends Component<CardListProps> {
           ))}
         </ul>
       </div>
+    ) : (
+      <div>No cards</div>
     );
   }
 }
