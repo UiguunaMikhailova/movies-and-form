@@ -1,5 +1,6 @@
 .home {
     background-color: #ebebeb;
-    height: calc(100vh - 80px);
+    min-height: calc(100vh - 80px);
     width: 100%;
+    padding: 30px;
 }

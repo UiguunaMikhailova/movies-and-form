@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import Layout from "Components/Layout/Layout";
+import React, { Component } from 'react';
+import Layout from 'Components/Layout/Layout';
 
 export default class NotFound extends Component {
   render() {

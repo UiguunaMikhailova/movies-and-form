@@ -17,13 +17,16 @@
     list-style: none;
     text-decoration: none;
 }
+.link {
+    text-decoration: none;
+}
 .header__item a {
-    color: #d3d3d3;
+    color: var(--clr2);
 }
 .search {
     position: absolute;
     right: 80px;
 }
 .link.active {
-    color: aquamarine;
+    color: var(--clr1);
 }
