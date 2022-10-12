@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import './Search.css';
 
-export default class Search extends Component {
+// const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`;
+
+type SearchProps = {
+  searchCards: (value: string) => void;
+};
+
+export default class Search extends Component<SearchProps> {
+  constructor(props: SearchProps) {
+    super(props);
+  }
   state = {
     value: localStorage.getItem('search') ?? '',
   };
@@ -18,6 +27,9 @@ export default class Search extends Component {
         autoFocus
         value={this.state.value}
         onChange={(e) => this.setState({ value: e.target.value })}
+        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
+          e.key === 'Enter' && this.props.searchCards(this.state.value)
+        }
       />
     );
   }
