@@ -7,13 +7,12 @@ type CardProps = {
   poster_path: string;
   vote_average: number;
   overview: string;
-  base_url: string;
 };
 
 export default class Card extends Component<CardProps> {
   render() {
     return (
-      <li className="movie">
+      <li className="movie" role="card">
         <div className="picture-wrapper">
           <img
             src={`https://image.tmdb.org/t/p/w500${this.props.poster_path}`}

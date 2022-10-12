@@ -9,12 +9,12 @@ export default class Header extends Component {
         <nav>
           <ul className="header__list">
             <li className="header__item">
-              <NavLink to="/" className="link" end>
+              <NavLink to="/" className="link" end role="home">
                 Home
               </NavLink>
             </li>
             <li className="header__item">
-              <NavLink to="/about" className="link">
+              <NavLink to="/about" className="link" role="about">
                 About
               </NavLink>
             </li>
