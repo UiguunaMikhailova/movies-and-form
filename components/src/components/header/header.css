@@ -4,6 +4,7 @@
     align-items: center;
     background-color: #1f1f1f;
     height: 80px;
+    position: relative;
 }
 .header__list {
     display: flex;
@@ -18,4 +19,11 @@
 }
 .header__item a {
     color: #d3d3d3;
+}
+.search {
+    position: absolute;
+    right: 80px;
+}
+.link.active {
+    color: aquamarine;
 }

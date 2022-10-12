@@ -1,19 +1,19 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import Header from 'components/header/header';
-import Home from 'components/pages/home/home';
-import About from 'components/pages/about/about';
+import React, { Component } from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "Components/Pages/Home/Home";
+import NotFound from "Components/Pages/NotFound/NotFound";
+import About from "Components/Pages/About/About";
 
-function App() {
-  return (
-    <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="about" element={<About />}></Route>
-      </Routes>
-    </>
-  );
+export default class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+    );
+  }
 }
-
-export default App;
