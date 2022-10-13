@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
+import { CardProps } from 'types/types';
 import './Card.css';
-
-type CardProps = {
-  key: number;
-  title: string;
-  poster_path: string;
-  vote_average: number;
-  overview: string;
-};
 
 export default class Card extends Component<CardProps> {
   render() {

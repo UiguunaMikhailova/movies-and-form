@@ -63,9 +63,9 @@
     width: 5px;
     background-color: var(--clr2);
   }
-  .overwiew-wrapper::-webkit-scrollbar-thumb { 
-    background-color: var(--clr3);
-  }
+.overwiew-wrapper::-webkit-scrollbar-thumb { 
+  background-color: var(--clr3);
+}
 .movie:hover .overwiew-wrapper{
   transform: translateY(0);
 }

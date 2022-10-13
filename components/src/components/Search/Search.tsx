@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import './Search.css';
-
-// const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`;
-
-// const popularUrl = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=0d5da78d3ffd7f7454f49e8eb45260f5`;
-const searchUrl =
-  'https://api.themoviedb.org/3/search/movie?api_key=0d5da78d3ffd7f7454f49e8eb45260f5&query=';
-
-type SearchProps = {
-  searchCards: (value: string) => void;
-};
+import { searchUrl } from 'Constants/Constants';
+import { SearchProps } from 'types/types';
 
 export default class Search extends Component<SearchProps> {
   constructor(props: SearchProps) {

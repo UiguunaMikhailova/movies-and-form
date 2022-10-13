@@ -25,4 +25,7 @@ test('card', () => {
     </BrowserRouter>
   );
   expect(screen.getByText('The Jack in the Box: Awakening')).toBeInTheDocument();
+  expect(
+    screen.getByText('When a vintage Jack-in-the-box is opened by a dying woman')
+  ).toBeInTheDocument();
 });
