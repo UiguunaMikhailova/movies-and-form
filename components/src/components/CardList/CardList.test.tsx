@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
 import { BrowserRouter } from 'react-router-dom';
-import CardList from './CardList';
+import CardList from '.';
 import { cards } from 'Constants/Constants';
 
 test('cardList', () => {

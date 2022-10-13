@@ -1,6 +1,6 @@
-import Card from 'Components/Card/Card';
 import React, { Component } from 'react';
 import './CardList.css';
+import Card from 'Components/Card';
 
 type CardProps = {
   key?: number;

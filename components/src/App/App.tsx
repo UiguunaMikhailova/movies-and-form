@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from 'Components/Pages/Home/Home';
-import NotFound from 'Components/Pages/NotFound/NotFound';
-import About from 'Components/Pages/About/About';
+import Home from 'Components/Pages/Home';
+import NotFound from 'Components/Pages/NotFound';
+import About from 'Components/Pages/About';
 
 export default class App extends Component {
   render() {

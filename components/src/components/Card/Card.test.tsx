@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
 import { BrowserRouter } from 'react-router-dom';
-import Card from './Card';
+import Card from '.';
 
 const card = {
   title: 'The Jack in the Box: Awakening',

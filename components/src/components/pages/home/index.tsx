@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './Home.css';
 import Layout from 'Components/Layout/Layout';
-import Search from '../../Search/Search';
-import CardList from 'Components/CardList/CardList';
+import Search from '../../Search';
+import CardList from 'Components/CardList';
 import { getData } from 'Requests/Requests';
 
 export default class Home extends Component {
