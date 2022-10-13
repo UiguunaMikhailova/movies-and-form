@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './Home.css';
-import Layout from 'Components/Layout/Layout';
-import Search from '../../Search';
-import CardList from 'Components/CardList';
+import './home.css';
 import { getData } from 'Requests/Requests';
+import CardList from 'Components/CardList';
+import Layout from 'Components/Layout/Layout';
+import Search from 'Components/Search';
 
 export default class Home extends Component {
   state = {

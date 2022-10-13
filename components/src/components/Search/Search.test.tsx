@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
 import { BrowserRouter } from 'react-router-dom';
-import Home from 'Components/Pages/Home';
+import Home from 'Components/pages/home';
 
 test('search', () => {
   render(
