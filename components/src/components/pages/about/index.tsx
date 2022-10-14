@@ -6,7 +6,9 @@ export default class About extends Component {
   render() {
     return (
       <Layout>
-        <div className="about">About</div>
+        <div className="about" role="aboutPage">
+          About
+        </div>
       </Layout>
     );
   }

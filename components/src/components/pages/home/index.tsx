@@ -20,7 +20,7 @@ export default class Home extends Component {
   render() {
     return (
       <Layout>
-        <div className="home">
+        <div className="home" role="homePage">
           <Search searchCards={this.searchCards.bind(this)} />
           <CardList cards={this.state.cards} isLoading={this.state.isLoading} />
         </div>

@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import CardList from '.';
 import { cards } from 'Constants/Constants';
 
-test('cardList', () => {
+test('render cardList', () => {
   render(
     <BrowserRouter>
       <CardList cards={cards} isLoading={false} />
@@ -16,4 +16,5 @@ test('cardList', () => {
   cardsArray.forEach((item) => {
     expect(item).toHaveTextContent(/jack/i);
   });
+  expect(cardsArray).toHaveLength(3);
 });

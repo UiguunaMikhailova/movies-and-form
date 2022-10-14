@@ -17,24 +17,28 @@ type CardListProps = {
 
 export default class CardList extends Component<CardListProps> {
   render() {
-    return this.props.isLoading ? (
-      <div>Loading</div>
-    ) : this.props.cards.length ? (
-      <div>
-        <ul className="films">
-          {this.props.cards.map((item: CardProps, index) => (
-            <Card
-              key={index}
-              title={item.title}
-              poster_path={item.poster_path}
-              vote_average={item.vote_average}
-              overview={item.overview}
-            />
-          ))}
-        </ul>
+    return (
+      <div role="cardList">
+        {this.props.isLoading ? (
+          <div>Loading</div>
+        ) : this.props.cards.length ? (
+          <div>
+            <ul className="films">
+              {this.props.cards.map((item: CardProps, index) => (
+                <Card
+                  key={index}
+                  title={item.title}
+                  poster_path={item.poster_path}
+                  vote_average={item.vote_average}
+                  overview={item.overview}
+                />
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <div>No cards</div>
+        )}
       </div>
-    ) : (
-      <div>No cards</div>
     );
   }
 }
