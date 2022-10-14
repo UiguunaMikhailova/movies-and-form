@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Routes, Route } from 'react-router-dom';
 import About from 'Components/pages/about';
 import Home from 'Components/pages/home';
-import NotFound from 'Components/pages/NotFound';
 import FormPage from 'Components/pages/FormPage/FormPage';
+import NotFound from 'Components/pages/NotFound';
+import React, { Component } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
 export default class App extends Component {
   render() {

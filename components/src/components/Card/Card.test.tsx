@@ -12,7 +12,7 @@ const card = {
     'When a vintage Jack-in-the-box is opened by a dying woman, she enters into a deal with the demon within that would see her illness cured in return for helping it claim six innocent victims.',
 };
 
-test('card', () => {
+test('render card', () => {
   render(
     <BrowserRouter>
       <Card
@@ -25,7 +25,6 @@ test('card', () => {
     </BrowserRouter>
   );
   expect(screen.getByText('The Jack in the Box: Awakening')).toBeInTheDocument();
-  expect(
-    screen.getByText('When a vintage Jack-in-the-box is opened by a dying woman')
-  ).toBeInTheDocument();
+  expect(screen.getByText('6.3')).toBeInTheDocument();
+  expect(screen.getByRole(/card/i)).toBeInTheDocument();
 });

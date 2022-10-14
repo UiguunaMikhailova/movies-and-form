@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './home.css';
-import { getData } from 'Requests/Requests';
-import CardList from 'Components/CardList';
 import Layout from 'Components/Layout/Layout';
-import Search from 'Components/Search';
+import Search from '../../Search';
+import CardList from 'Components/CardList';
+import { getData } from 'Requests/Requests';
 
 export default class Home extends Component {
   state = {
@@ -20,7 +20,7 @@ export default class Home extends Component {
   render() {
     return (
       <Layout>
-        <div className="home">
+        <div className="home" role="homePage">
           <Search searchCards={this.searchCards.bind(this)} />
           <CardList cards={this.state.cards} isLoading={this.state.isLoading} />
         </div>
