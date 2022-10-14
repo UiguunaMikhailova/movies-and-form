@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Home.css';
+import './home.css';
 import Layout from 'Components/Layout/Layout';
 import Search from '../../Search';
 import CardList from 'Components/CardList';
