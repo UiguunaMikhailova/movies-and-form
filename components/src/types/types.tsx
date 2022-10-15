@@ -10,4 +10,21 @@ type SearchProps = {
   searchCards: (value: string) => void;
 };
 
-export { CardProps, SearchProps };
+type CardForm = {
+  name: string;
+  surname: string;
+  date: string;
+  country: string;
+  gender: string;
+  file: string;
+};
+
+type FormCardListProps = {
+  cards: CardForm[];
+};
+
+type FormProps = {
+  updateCards: (card: CardForm) => void;
+};
+
+export { CardProps, SearchProps, CardForm, FormCardListProps, FormProps };
