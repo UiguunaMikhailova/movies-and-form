@@ -26,7 +26,7 @@
 .form__error-msg {
     color: #e60000;
     font-size: 16px;
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 
 .form__label {
@@ -71,6 +71,10 @@
 
 .button:hover {
     border: 3px solid #4b3683;
+}
+
+.button:disabled {
+    border: 3px solid #ff0000;
 }
 
 @media (max-width: 768px) {
