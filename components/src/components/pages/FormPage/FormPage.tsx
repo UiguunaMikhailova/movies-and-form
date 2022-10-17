@@ -21,7 +21,7 @@ export default class FormPage extends Component {
   render() {
     return (
       <Layout>
-        <div className="home">
+        <div className="home" role="formPage">
           <Form updateCards={this.updateCards.bind(this)} save={this.state.save} />
           <FormCardList cards={this.state.cards} />
         </div>

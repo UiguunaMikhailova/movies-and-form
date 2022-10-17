@@ -3,14 +3,9 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
 import { BrowserRouter } from 'react-router-dom';
 import Card from '.';
+import { cards } from 'Constants/Constants';
 
-const card = {
-  title: 'The Jack in the Box: Awakening',
-  poster_path: '/3Ib8vlWTrAKRrTWUrTrZPOMW4jp.jpg',
-  vote_average: 6.3,
-  overview:
-    'When a vintage Jack-in-the-box is opened by a dying woman, she enters into a deal with the demon within that would see her illness cured in return for helping it claim six innocent victims.',
-};
+const card = cards[0];
 
 test('render card', () => {
   render(
@@ -24,7 +19,7 @@ test('render card', () => {
       />
     </BrowserRouter>
   );
-  expect(screen.getByText('The Jack in the Box: Awakening')).toBeInTheDocument();
-  expect(screen.getByText('6.3')).toBeInTheDocument();
+  expect(screen.getByText('Jack the Giant Slayer')).toBeInTheDocument();
+  expect(screen.getByText('5.8')).toBeInTheDocument();
   expect(screen.getByRole(/card/i)).toBeInTheDocument();
 });

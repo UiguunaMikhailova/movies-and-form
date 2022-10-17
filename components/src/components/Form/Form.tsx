@@ -77,7 +77,7 @@ export default class Form extends Component<FormProps> {
 
   render() {
     return (
-      <div className="sign-in">
+      <div className="sign-in" role="form">
         <h3 className="form__title" id="form__title">
           Create personal card
         </h3>
@@ -87,7 +87,9 @@ export default class Form extends Component<FormProps> {
               Name
             </label>
             {!this.name.current?.value && this.state.isSubmitted && (
-              <p className="form__error-msg">Incorrect name</p>
+              <p className="form__error-msg" role="error-message">
+                Incorrect name
+              </p>
             )}
           </div>
           <input
@@ -103,7 +105,9 @@ export default class Form extends Component<FormProps> {
               Surname
             </label>
             {!this.surname.current?.value && this.state.isSubmitted && (
-              <p className="form__error-msg">Incorrect surname</p>
+              <p className="form__error-msg" role="error-message">
+                Incorrect surname
+              </p>
             )}
           </div>
           <input
@@ -119,13 +123,16 @@ export default class Form extends Component<FormProps> {
               Date of birth
             </label>
             {!this.date.current?.value && this.state.isSubmitted && (
-              <p className="form__error-msg">Please enter date</p>
+              <p className="form__error-msg" role="error-message">
+                Please enter date
+              </p>
             )}
           </div>
           <input
             className="form__input"
             type="date"
             name="date"
+            role="date"
             ref={this.date}
             onChange={this.handleChange}
           />
@@ -134,10 +141,17 @@ export default class Form extends Component<FormProps> {
               Country
             </label>
             {!this.country.current?.value && this.state.isSubmitted && (
-              <p className="form__error-msg">Please enter country</p>
+              <p className="form__error-msg" role="error-message">
+                Please enter country
+              </p>
             )}
           </div>
-          <select className="form__input" ref={this.country} onChange={this.handleChange}>
+          <select
+            className="form__input"
+            role="country"
+            ref={this.country}
+            onChange={this.handleChange}
+          >
             {COUNTRIES.map((item, index) => {
               return (
                 <option key={index} value={item}>
@@ -153,6 +167,7 @@ export default class Form extends Component<FormProps> {
                 type="radio"
                 name="gender"
                 value="male"
+                role="gender"
                 ref={this.genderMale}
                 onChange={this.handleChange}
               />
@@ -171,7 +186,9 @@ export default class Form extends Component<FormProps> {
             {!this.genderMale.current?.checked &&
               this.state.isSubmitted &&
               !this.genderFemale.current?.checked && (
-                <p className="form__error-msg">The gender field is required</p>
+                <p className="form__error-msg" role="error-message">
+                  The gender field is required
+                </p>
               )}
           </fieldset>
           <label className="form__label" htmlFor="file">
@@ -181,20 +198,35 @@ export default class Form extends Component<FormProps> {
             type="file"
             name="file"
             accept="image/png, image/jpeg"
+            role="file"
             ref={this.file}
             onChange={this.handleChange}
           />
           {!this.file.current?.files![0] && this.state.isSubmitted && (
-            <p className="form__error-msg">This field is required</p>
+            <p className="form__error-msg" role="error-message">
+              This field is required
+            </p>
           )}
           <label className="form__label">
-            <input type="checkbox" ref={this.checkbox} onChange={this.handleChange} />I consent to
-            my personal data
+            <input
+              type="checkbox"
+              role="checkbox"
+              ref={this.checkbox}
+              onChange={this.handleChange}
+            />
+            I consent to my personal data
           </label>
           {!this.checkbox.current?.checked && this.state.isSubmitted && (
-            <p className="form__error-msg">This field is required</p>
+            <p className="form__error-msg" role="error-message">
+              This checkbox is required
+            </p>
           )}
-          <button className="button" type="submit" disabled={this.state.isDisable}>
+          <button
+            className="button"
+            type="submit"
+            disabled={this.state.isDisable}
+            role="submit-button"
+          >
             Submit
           </button>
         </form>

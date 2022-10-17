@@ -6,7 +6,7 @@ import './FormCardList.css';
 export default class FormCardList extends Component<FormCardListProps> {
   render() {
     return (
-      <ul role="form-card-list" className="form-card-list">
+      <ul role="formCardList" className="form-card-list">
         {this.props.cards.map((item, index) => {
           return (
             <FormCard

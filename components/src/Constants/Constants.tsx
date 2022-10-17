@@ -22,7 +22,34 @@ const cards = [
   },
 ];
 
+const formCards = [
+  {
+    name: 'Ivan',
+    surname: 'Ivanov',
+    date: '2022-10-08',
+    country: 'Russia',
+    gender: 'male',
+    file: '',
+  },
+  {
+    name: 'Ivan',
+    surname: 'Ivanov',
+    date: '2022-10-08',
+    country: 'Russia',
+    gender: 'male',
+    file: 'ivan',
+  },
+  {
+    name: 'Ivan',
+    surname: 'Ivanov',
+    date: '2022-10-08',
+    country: 'Russia',
+    gender: 'male',
+    file: '',
+  },
+];
+
 const searchUrl =
   'https://api.themoviedb.org/3/search/movie?api_key=0d5da78d3ffd7f7454f49e8eb45260f5&query=';
 
-export { cards, searchUrl };
+export { cards, searchUrl, formCards };

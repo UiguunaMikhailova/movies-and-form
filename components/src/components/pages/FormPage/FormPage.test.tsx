@@ -2,15 +2,14 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
 import { BrowserRouter } from 'react-router-dom';
-import Home from '.';
+import FormPage from './FormPage';
 
-test('render home', () => {
+test('render form page', () => {
   render(
     <BrowserRouter>
-      <Home />
+      <FormPage />
     </BrowserRouter>
   );
-  expect(screen.getByRole(/search/i)).toBeInTheDocument();
-  expect(screen.getByRole(/homePage/i)).toBeInTheDocument();
-  expect(screen.getByRole(/cardList/i)).toBeInTheDocument();
+  expect(screen.getByRole(/formPage/i)).toBeInTheDocument();
+  expect(screen.getByRole(/formCardList/i)).toBeInTheDocument();
 });
