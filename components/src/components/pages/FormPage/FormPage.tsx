@@ -7,18 +7,22 @@ import { CardForm } from 'types/types';
 export default class FormPage extends Component {
   state = {
     cards: [],
+    save: false,
   };
   updateCards(card: CardForm) {
-    console.log(1);
-    this.setState({
-      cards: [...this.state.cards, card],
-    });
+    this.setState({ save: true });
+    setTimeout(() => {
+      this.setState({ save: false });
+      this.setState({
+        cards: [...this.state.cards, card],
+      });
+    }, 1000);
   }
   render() {
     return (
       <Layout>
         <div className="home">
-          <Form updateCards={this.updateCards.bind(this)} />
+          <Form updateCards={this.updateCards.bind(this)} save={this.state.save} />
           <FormCardList cards={this.state.cards} />
         </div>
       </Layout>

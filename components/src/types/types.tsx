@@ -25,6 +25,7 @@ type FormCardListProps = {
 
 type FormProps = {
   updateCards: (card: CardForm) => void;
+  save: boolean;
 };
 
 export { CardProps, SearchProps, CardForm, FormCardListProps, FormProps };

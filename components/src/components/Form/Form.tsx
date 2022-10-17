@@ -198,6 +198,9 @@ export default class Form extends Component<FormProps> {
             Submit
           </button>
         </form>
+        <p hidden={!this.props.save} className="form__title">
+          Creating the card...
+        </p>
       </div>
     );
   }
