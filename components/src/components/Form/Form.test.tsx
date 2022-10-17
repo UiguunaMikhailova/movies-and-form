@@ -33,6 +33,11 @@ describe('Form', () => {
     expect(screen.getByRole('submit-button')).not.toHaveAttribute('disabled');
   });
 
+  test('input to have value', () => {
+    fireEvent.input(screen.getByPlaceholderText('Your name...'), { target: { value: 'a' } });
+    expect(screen.getByPlaceholderText('Your name...')).toHaveValue('a');
+  });
+
   test('disabled submit button after click if changes is not at all inputs', () => {
     fireEvent.input(screen.getByPlaceholderText('Your name...'), { target: { value: 'a' } });
     expect(screen.getByRole('submit-button')).not.toHaveAttribute('disabled');
