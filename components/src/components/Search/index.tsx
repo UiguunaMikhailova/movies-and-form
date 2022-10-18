@@ -8,7 +8,7 @@ export default class Search extends Component<SearchProps> {
     super(props);
   }
   state = {
-    value: localStorage.getItem('search') ?? 'jack',
+    value: localStorage.getItem('search') ?? 'j',
   };
   componentWillUnmount(): void {
     localStorage.setItem('search', this.state.value);
