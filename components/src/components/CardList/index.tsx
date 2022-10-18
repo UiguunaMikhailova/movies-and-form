@@ -20,7 +20,7 @@ export default class CardList extends Component<CardListProps> {
     return (
       <div role="cardList">
         {this.props.isLoading ? (
-          <div>Loading</div>
+          <div className="loading">Loading</div>
         ) : this.props.cards.length ? (
           <div>
             <ul className="films">
