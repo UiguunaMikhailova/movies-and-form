@@ -1,10 +1,12 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
 import { BrowserRouter } from 'react-router-dom';
-// import Home from 'Components/pages/home';
 import Search from '.';
 import Header from 'Components/Header';
+import * as API from '../../Requests/Requests';
+import { cards, searchUrl } from '../../Constants/Constants';
+import Home from 'Components/pages/home';
 
 describe('search component', () => {
   test('render search', () => {
@@ -34,5 +36,29 @@ describe('search component', () => {
     localStorage.setItem(key, value);
     expect(localStorage.getItem(key)).toEqual(value);
     expect(localStorage.setItem).toHaveBeenCalledTimes(1);
+  });
+
+  test('api requests', async () => {
+    const getDataMock = jest.spyOn(API, 'getData');
+    getDataMock.mockResolvedValue(cards);
+
+    await act(async () => {
+      render(
+        <BrowserRouter>
+          <Home />
+        </BrowserRouter>
+      );
+    });
+
+    expect(getDataMock).toHaveBeenCalled();
+    expect(screen.getByText('Jack the Giant Slayer')).toBeInTheDocument();
+    const input = screen.getByRole('search');
+    fireEvent.input(input, {
+      target: { value: 'harry' },
+    });
+    fireEvent.keyDown(input, {
+      key: 'Enter',
+    });
+    expect(getDataMock).toHaveBeenCalledWith(`${searchUrl}harry`);
   });
 });
