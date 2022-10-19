@@ -5,20 +5,27 @@ import './Card.css';
 
 export default class Card extends Component<CardProps> {
   state = {
-    props: {},
     isModal: false,
   };
-  showModal(props: CardProps) {
+  showModal() {
     this.setState({ isModal: true });
-    this.setState({ props: { ...props } });
+  }
+  closeModal() {
+    this.setState({ isModal: false });
   }
   render() {
     return (
       <div>
         {this.state.isModal ? (
-          <Modal />
+          <Modal
+            title={this.props.title}
+            poster_path={this.props.poster_path}
+            vote_average={this.props.vote_average}
+            overview={this.props.overview}
+            closeModal={this.closeModal.bind(this)}
+          />
         ) : (
-          <li className="movie" role="card" onClick={() => this.showModal(this.props)}>
+          <li className="movie" role="card" onClick={() => this.showModal()}>
             <div className="picture-wrapper">
               <img
                 src={`https://image.tmdb.org/t/p/w500${this.props.poster_path}`}

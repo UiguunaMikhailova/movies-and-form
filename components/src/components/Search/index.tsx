@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Search.css';
-import { searchUrl } from 'Constants/Constants';
+import { defaultValue, searchUrl } from 'Constants/Constants';
 import { SearchProps } from 'types/types';
 
 export default class Search extends Component<SearchProps> {
@@ -8,7 +8,7 @@ export default class Search extends Component<SearchProps> {
     super(props);
   }
   state = {
-    value: localStorage.getItem('search') ?? 'j',
+    value: localStorage.getItem('search') ?? defaultValue,
   };
   componentWillUnmount(): void {
     localStorage.setItem('search', this.state.value);

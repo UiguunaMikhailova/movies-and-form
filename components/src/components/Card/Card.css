@@ -17,6 +17,7 @@
     color: var(--clr1);
     font-size: 20px;
     border: 2px solid var(--clr4);
+    cursor: pointer;
 }
 .picture {
     width: 100%;
@@ -44,31 +45,4 @@
     padding-left: 10px;
     color: #eba016;
     font-size: 22px;
-}
-.overwiew-wrapper {
-    min-height: 100%;
-    color: var(--clr5);
-  background-color: var(--clr1);
-  padding: 15px;
-  position: absolute;
-  left: 0;
-    bottom: 0;
-    right: 0;
-    max-height: 100%;
-    transform: translateY(100%);
-    overflow-y: auto;
-    transition: 0.3s ease-in;
-}
-.overwiew-wrapper::-webkit-scrollbar {
-    width: 5px;
-    background-color: var(--clr2);
-  }
-.overwiew-wrapper::-webkit-scrollbar-thumb { 
-  background-color: var(--clr3);
-}
-.movie:hover .overwiew-wrapper{
-  transform: translateY(0);
-}
-.overwiew-title {
-    font-weight: 600;
 }

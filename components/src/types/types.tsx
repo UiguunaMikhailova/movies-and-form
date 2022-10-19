@@ -28,4 +28,10 @@ type FormProps = {
   save: boolean;
 };
 
-export { CardProps, SearchProps, CardForm, FormCardListProps, FormProps };
+type Modal = {
+  closeModal: () => void;
+};
+
+type ModalProps = Omit<CardProps, 'key'> & Modal;
+
+export { CardProps, SearchProps, CardForm, FormCardListProps, FormProps, ModalProps };

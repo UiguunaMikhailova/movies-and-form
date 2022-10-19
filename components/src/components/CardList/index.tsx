@@ -36,7 +36,7 @@ export default class CardList extends Component<CardListProps> {
             </ul>
           </div>
         ) : (
-          <div>No cards</div>
+          <div>Sorry, no movies were found by the request</div>
         )}
       </div>
     );

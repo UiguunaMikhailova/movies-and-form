@@ -14,7 +14,11 @@ export default class Home extends Component {
     this.setState({ isLoading: true, cards: [] });
 
     getData(url).then((data) => {
-      this.setState({ cards: data.results, isLoading: false });
+      if (data) {
+        this.setState({ cards: data, isLoading: false });
+      } else {
+        this.setState({ cards: [], isLoading: false });
+      }
     });
   }
   render() {
