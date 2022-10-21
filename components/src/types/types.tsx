@@ -19,6 +19,17 @@ type CardForm = {
   country: string;
   gender: string;
   file: string;
+  checkbox?: boolean;
+};
+
+type FormInputs = {
+  name: string;
+  surname: string;
+  date: string;
+  country: string;
+  gender: string;
+  file: FileList;
+  checkbox: boolean;
 };
 
 type CardListProps = {
@@ -54,4 +65,5 @@ export {
   ModalProps,
   LayoutProps,
   CardListProps,
+  FormInputs,
 };
