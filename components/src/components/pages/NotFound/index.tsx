@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Layout from 'Components/Layout/Layout';
 
-export default class NotFound extends Component {
-  render() {
-    return (
-      <Layout>
-        <div>Not Found</div>
-      </Layout>
-    );
-  }
+export default function NotFound() {
+  return (
+    <Layout>
+      <div>Not Found</div>
+    </Layout>
+  );
 }

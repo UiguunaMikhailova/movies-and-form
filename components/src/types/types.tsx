@@ -1,5 +1,7 @@
+import { ReactNode } from 'react';
+
 type CardProps = {
-  key: number;
+  key?: number;
   title: string;
   poster_path: string;
   vote_average: number;
@@ -19,6 +21,11 @@ type CardForm = {
   file: string;
 };
 
+type CardListProps = {
+  cards: CardProps[];
+  isLoading: boolean;
+};
+
 type FormCardListProps = {
   cards: CardForm[];
 };
@@ -32,6 +39,19 @@ type Modal = {
   closeModal: () => void;
 };
 
+type LayoutProps = {
+  children: ReactNode;
+};
+
 type ModalProps = Omit<CardProps, 'key'> & Modal;
 
-export { CardProps, SearchProps, CardForm, FormCardListProps, FormProps, ModalProps };
+export {
+  CardProps,
+  SearchProps,
+  CardForm,
+  FormCardListProps,
+  FormProps,
+  ModalProps,
+  LayoutProps,
+  CardListProps,
+};

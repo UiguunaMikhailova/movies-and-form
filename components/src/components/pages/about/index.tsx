@@ -1,15 +1,13 @@
+import React from 'react';
 import Layout from 'Components/Layout/Layout';
-import React, { Component } from 'react';
 import './About.css';
 
-export default class About extends Component {
-  render() {
-    return (
-      <Layout>
-        <div className="about" role="aboutPage">
-          About
-        </div>
-      </Layout>
-    );
-  }
+export default function About() {
+  return (
+    <Layout>
+      <div className="about" role="aboutPage">
+        About
+      </div>
+    </Layout>
+  );
 }

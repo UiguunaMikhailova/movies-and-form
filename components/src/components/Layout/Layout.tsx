@@ -1,17 +1,12 @@
 import Header from 'Components/Header';
-import React, { Component, ReactNode } from 'react';
+import React from 'react';
+import { LayoutProps } from 'types/types';
 
-type LayoutProps = {
-  children: ReactNode;
-};
-
-export default class Layout extends Component<LayoutProps> {
-  render() {
-    return (
-      <>
-        <Header />
-        <main>{this.props.children}</main>
-      </>
-    );
-  }
+export default function Layout({ children }: LayoutProps) {
+  return (
+    <>
+      <Header />
+      <main>{children}</main>
+    </>
+  );
 }
