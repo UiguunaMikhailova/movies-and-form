@@ -9,20 +9,24 @@ import { cards, searchUrl } from '../../Constants/Constants';
 import Home from 'Components/pages/home';
 
 describe('search component', () => {
-  test('render search', () => {
-    render(
-      <BrowserRouter>
-        <Header />
-        <Search searchCards={() => {}} />
-      </BrowserRouter>
-    );
+  test('render search', async () => {
+    await act(() => {
+      render(
+        <BrowserRouter>
+          <Header />
+          <Search searchCards={() => {}} />
+        </BrowserRouter>
+      );
+    });
     const input = screen.getByRole('search') as HTMLInputElement;
     const about = screen.getByRole('aboutLink');
     const home = screen.getByRole('homeLink');
     expect(input).toBeInTheDocument();
-    fireEvent.change(input, { target: { value: 'qwerty' } });
-    fireEvent.click(about);
-    fireEvent.click(home);
+    await act(() => {
+      fireEvent.change(input, { target: { value: 'qwerty' } });
+      fireEvent.click(about);
+      fireEvent.click(home);
+    });
     expect(input.value).toBe('qwerty');
   });
 
@@ -40,7 +44,9 @@ describe('search component', () => {
 
   test('api requests', async () => {
     const getDataMock = jest.spyOn(API, 'getData');
-    getDataMock.mockResolvedValue(cards);
+    await act(() => {
+      getDataMock.mockResolvedValue(cards);
+    });
 
     await act(async () => {
       render(
@@ -53,11 +59,13 @@ describe('search component', () => {
     expect(getDataMock).toHaveBeenCalled();
     expect(screen.getByText('Jack the Giant Slayer')).toBeInTheDocument();
     const input = screen.getByRole('search');
-    fireEvent.input(input, {
-      target: { value: 'harry' },
-    });
-    fireEvent.keyDown(input, {
-      key: 'Enter',
+    await act(() => {
+      fireEvent.input(input, {
+        target: { value: 'harry' },
+      });
+      fireEvent.keyDown(input, {
+        key: 'Enter',
+      });
     });
     expect(getDataMock).toHaveBeenCalledWith(`${searchUrl}harry`);
   });

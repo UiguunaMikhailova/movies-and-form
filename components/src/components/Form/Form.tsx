@@ -11,10 +11,9 @@ export default function Form({ updateCards, save }: FormProps) {
     reset,
     setValue,
     formState: { errors, isDirty },
-  } = useForm<FormInputs>({ mode: 'onSubmit' });
+  } = useForm<FormInputs>({ mode: 'onChange' });
 
   const onSubmit = (data: FormInputs) => {
-    console.log(data);
     updateCards({
       name: data.name,
       surname: data.surname,
@@ -37,11 +36,7 @@ export default function Form({ updateCards, save }: FormProps) {
           <label className="form__label" htmlFor="name">
             Name
           </label>
-          {errors.name && (
-            <p className="form__error-msg" role="error-message">
-              Incorrect name
-            </p>
-          )}
+          {errors.name && <p className="form__error-msg">Incorrect name</p>}
         </div>
         <input
           className="form__input"
