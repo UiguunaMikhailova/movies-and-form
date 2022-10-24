@@ -9,20 +9,14 @@ export default function Modal({
   vote_average,
   overview,
 }: ModalProps) {
-  function notCloseModal(e: React.MouseEvent<HTMLDivElement>) {
-    e.stopPropagation();
-  }
-
   return (
-    <div className="overlay" onClick={closeModal}>
-      <div
-        className="modal"
-        onClick={(e: React.MouseEvent<HTMLDivElement>) => {
-          notCloseModal(e);
-        }}
-      >
-        <div className="modal__close" onClick={closeModal}>
-          <img src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png" />
+    <div className="overlay close" onClick={(e) => closeModal(e)}>
+      <div className="modal">
+        <div className="modal__close close" onClick={(e) => closeModal(e)}>
+          <img
+            className="close"
+            src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png"
+          />
         </div>
         <div className="modal__card">
           <div className="modal__image">

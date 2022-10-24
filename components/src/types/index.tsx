@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 type CardProps = {
   key?: number;
@@ -47,7 +47,7 @@ type FormProps = {
 };
 
 type Modal = {
-  closeModal: () => void;
+  closeModal: (event: React.MouseEvent) => void;
 };
 
 type LayoutProps = {

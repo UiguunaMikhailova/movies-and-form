@@ -123,27 +123,4 @@ describe('Form', () => {
       await waitFor(() => expect(message).not.toBeInTheDocument());
     });
   });
-
-  // test('updateCards function is called', async () => {
-  //   const fileInput = screen.getByRole('file');
-  //   const nameInput = screen.getByPlaceholderText('Your name...');
-  //   const surnameInput = screen.getByPlaceholderText('Your surname...');
-  //   const dateInput = screen.getByRole('date');
-  //   const genderInput = screen.getByRole('gender');
-  //   const countryInput = screen.getByRole('country');
-  //   const checkboxInput = screen.getByRole('checkbox');
-  //   const submitBtn = screen.getByRole('submit-button');
-  //   await act(async () => {
-  //     const file = new File(['q'], 'q.jpg', { type: 'image/jpeg' });
-  //     fireEvent.input(nameInput, { target: { value: 'a' } });
-  //     fireEvent.input(surnameInput, { target: { value: 'a' } });
-  //     fireEvent.change(dateInput, { target: { value: '2022-01-01' } });
-  //     fireEvent.change(countryInput, { target: { value: 'France' } });
-  //     fireEvent.click(genderInput);
-  //     fireEvent.click(checkboxInput);
-  //     userEvent.upload(fileInput, file);
-  //     fireEvent.click(submitBtn);
-  //   });
-  //   await waitFor(() => expect(updateCards).toBeCalledTimes(1));
-  // });
 });

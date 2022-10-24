@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
 import App from 'App/App';
 
-test('Render header', () => {
+test('Render header', async () => {
   render(
     <BrowserRouter>
       <App />
@@ -16,12 +16,14 @@ test('Render header', () => {
   const homePage = screen.getByRole('homePage');
   const about = screen.getByText('About');
   const aboutLink = screen.getByRole('aboutLink');
-  const aboutPage = screen.getByRole('aboutPage');
 
   expect(header).toBeInTheDocument();
   expect(home).toBeInTheDocument();
   expect(about).toBeInTheDocument();
   expect(homePage).toBeInTheDocument();
-  fireEvent.click(aboutLink);
+  await act(async () => {
+    fireEvent.click(aboutLink);
+  });
+  const aboutPage = screen.getByRole('aboutPage');
   expect(aboutPage).toBeInTheDocument();
 });

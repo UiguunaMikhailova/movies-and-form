@@ -47,8 +47,6 @@ describe('search component', () => {
 
   test('api requests', async () => {
     const getDataMock = jest.spyOn(API, 'getData');
-    const title = screen.getByText('Jack the Giant Slayer');
-    const input = screen.getByRole('search');
 
     await act(async () => {
       getDataMock.mockResolvedValue(cards);
@@ -62,6 +60,8 @@ describe('search component', () => {
       );
     });
 
+    const title = screen.getByText('Jack the Giant Slayer');
+    const input = screen.getByRole('search');
     expect(getDataMock).toHaveBeenCalled();
     expect(title).toBeInTheDocument();
 

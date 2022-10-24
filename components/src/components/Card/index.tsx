@@ -10,8 +10,11 @@ export default function Card({ title, poster_path, vote_average, overview }: Car
     setIsModal(true);
   }
 
-  function closeModal() {
-    setIsModal(false);
+  function closeModal(e: React.MouseEvent) {
+    const element = e.target as HTMLElement;
+    if (element.classList.contains('close')) {
+      setIsModal(false);
+    }
   }
 
   return (
@@ -25,7 +28,7 @@ export default function Card({ title, poster_path, vote_average, overview }: Car
           closeModal={closeModal}
         />
       ) : (
-        <li className="movie" role="card" onClick={() => showModal()}>
+        <li className="movie" role="card" onClick={showModal}>
           <div className="picture-wrapper">
             <img
               src={`https://image.tmdb.org/t/p/w500${poster_path}`}
