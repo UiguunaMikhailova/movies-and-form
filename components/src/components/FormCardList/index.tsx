@@ -1,6 +1,6 @@
 import React from 'react';
-import { FormCardListProps } from 'types/types';
-import FormCard from 'Components/FormCard/FormCard';
+import FormCard from 'Components/FormCard';
+import { FormCardListProps } from 'types';
 import './FormCardList.css';
 
 export default function FormCardList({ cards }: FormCardListProps) {

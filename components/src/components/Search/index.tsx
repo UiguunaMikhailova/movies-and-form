@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { SearchProps } from 'types';
+import { popularUrl, searchUrl } from 'Constants';
 import './Search.css';
-import { popularUrl, searchUrl } from 'Constants/Constants';
-import { SearchProps } from 'types/types';
 
 export default function Search({ searchCards }: SearchProps) {
   const [value, setValue] = useState(localStorage.getItem('search') ?? '');

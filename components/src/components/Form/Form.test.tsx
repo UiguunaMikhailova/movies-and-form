@@ -1,9 +1,9 @@
 import React from 'react';
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
-import '@testing-library/react/dont-cleanup-after-each';
 import { BrowserRouter } from 'react-router-dom';
-import Form from './Form';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import '@testing-library/react/dont-cleanup-after-each';
+import Form from '.';
 
 const updateCards = jest.fn();
 global.URL.createObjectURL = jest.fn();

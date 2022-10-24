@@ -1,8 +1,8 @@
-import Form from 'Components/Form/Form';
-import FormCardList from 'Components/FormCardList/FormCardList';
-import Layout from 'Components/Layout/Layout';
 import React, { useState } from 'react';
-import { CardForm } from 'types/types';
+import Form from 'Components/Form';
+import FormCardList from 'Components/FormCardList';
+import Layout from 'Components/Layout';
+import { CardForm } from 'types';
 
 export default function FormPage() {
   const [cards, setCards] = useState<CardForm[]>([]);

@@ -1,6 +1,6 @@
-import Modal from 'Components/Modal/Modal';
 import React, { useState } from 'react';
-import { CardProps } from 'types/types';
+import Modal from 'Components/Modal';
+import { CardProps } from 'types';
 import './Card.css';
 
 export default function Card({ title, poster_path, vote_average, overview }: CardProps) {

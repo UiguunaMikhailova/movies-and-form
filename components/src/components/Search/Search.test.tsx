@@ -1,12 +1,12 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
-import { BrowserRouter } from 'react-router-dom';
+import Home from 'Components/pages/home';
 import Search from '.';
 import Header from 'Components/Header';
-import * as API from '../../Requests/Requests';
-import { cards, searchUrl } from '../../Constants/Constants';
-import Home from 'Components/pages/home';
+import * as API from '../../Requests';
+import { cards, searchUrl } from '../../Constants';
 
 describe('search component', () => {
   test('render search', async () => {

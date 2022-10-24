@@ -1,9 +1,9 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { act, render, screen } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
-import { BrowserRouter } from 'react-router-dom';
 import Card from '.';
-import { card } from 'Constants/Constants';
+import { card } from 'Constants';
 
 test('render card', async () => {
   await act(() => {

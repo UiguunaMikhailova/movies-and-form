@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardForm } from 'types/types';
+import { CardForm } from 'types';
 import './FormCard.css';
 
 export default function FormCard({ file, name, surname, date, country, gender }: CardForm) {

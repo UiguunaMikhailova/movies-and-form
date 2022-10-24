@@ -1,8 +1,7 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
-import { BrowserRouter } from 'react-router-dom';
-// import Header from '.';
 import App from 'App/App';
 
 test('Render header', () => {

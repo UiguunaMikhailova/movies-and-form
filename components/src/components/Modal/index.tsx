@@ -1,5 +1,5 @@
 import React from 'react';
-import { ModalProps } from 'types/types';
+import { ModalProps } from 'types';
 import './Modal.css';
 
 export default function Modal({

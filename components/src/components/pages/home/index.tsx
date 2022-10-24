@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './home.css';
-import Layout from 'Components/Layout/Layout';
-import Search from '../../Search';
+import Layout from 'Components/Layout';
+import Search from 'Components/Search';
 import CardList from 'Components/CardList';
-import { getData } from 'Requests/Requests';
+import { getData } from 'Requests';
+import './home.css';
 
 export default function Home() {
   const [cards, setCards] = useState([]);

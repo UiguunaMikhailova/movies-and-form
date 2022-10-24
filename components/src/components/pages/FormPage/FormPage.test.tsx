@@ -1,8 +1,8 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { act, render, screen } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
-import { BrowserRouter } from 'react-router-dom';
-import FormPage from './FormPage';
+import FormPage from '.';
 
 test('render form page', async () => {
   await act(() => {

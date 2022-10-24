@@ -1,8 +1,8 @@
 import React from 'react';
-import COUNTRIES from 'Constants/countries';
-import './Form.css';
-import { FormInputs, FormProps } from 'types/types';
 import { useForm } from 'react-hook-form';
+import { COUNTRIES } from 'Constants';
+import { FormInputs, FormProps } from 'types';
+import './Form.css';
 
 export default function Form({ updateCards, save }: FormProps) {
   const {

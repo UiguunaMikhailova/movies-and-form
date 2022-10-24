@@ -1,7 +1,7 @@
 import React from 'react';
-import './CardList.css';
 import Card from 'Components/Card';
-import { CardListProps, CardProps } from 'types/types';
+import { CardListProps, CardProps } from 'types';
+import './CardList.css';
 
 export default function CardList({ isLoading, cards }: CardListProps) {
   return (

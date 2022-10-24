@@ -1,7 +1,7 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { render, screen, act } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
-import { BrowserRouter } from 'react-router-dom';
 import Home from '.';
 
 test('render home', async () => {
