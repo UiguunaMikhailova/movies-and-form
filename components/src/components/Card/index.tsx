@@ -5,12 +5,15 @@ import './Card.css';
 
 export default function Card({ title, poster_path, vote_average, overview }: CardProps) {
   const [isModal, setIsModal] = useState(false);
+
   function showModal() {
     setIsModal(true);
   }
+
   function closeModal() {
     setIsModal(false);
   }
+
   return (
     <div>
       {isModal ? (
@@ -33,10 +36,6 @@ export default function Card({ title, poster_path, vote_average, overview }: Car
           <div className="movie-title-wrapper">
             <div className="movie-title">{title}</div>
             <div className="movie-rating">{vote_average}</div>
-          </div>
-          <div className="overwiew-wrapper">
-            <div className="overwiew-title">Overwiew</div>
-            <div className="overwiew-text">{overview}</div>
           </div>
         </li>
       )}

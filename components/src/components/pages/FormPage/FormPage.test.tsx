@@ -13,6 +13,9 @@ test('render form page', async () => {
     );
   });
 
-  expect(screen.getByRole(/formPage/i)).toBeInTheDocument();
-  expect(screen.getByRole(/formCardList/i)).toBeInTheDocument();
+  const formPage = screen.getByRole(/formPage/i);
+  const formCardList = screen.getByRole(/formCardList/i);
+
+  expect(formPage).toBeInTheDocument();
+  expect(formCardList).toBeInTheDocument();
 });

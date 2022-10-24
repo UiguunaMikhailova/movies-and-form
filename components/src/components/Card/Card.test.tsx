@@ -3,9 +3,7 @@ import { act, render, screen } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
 import { BrowserRouter } from 'react-router-dom';
 import Card from '.';
-import { cards } from 'Constants/Constants';
-
-const card = cards[0];
+import { card } from 'Constants/Constants';
 
 test('render card', async () => {
   await act(() => {
@@ -21,7 +19,12 @@ test('render card', async () => {
       </BrowserRouter>
     );
   });
-  expect(screen.getByText('Jack the Giant Slayer')).toBeInTheDocument();
-  expect(screen.getByText('5.8')).toBeInTheDocument();
-  expect(screen.getByRole(/card/i)).toBeInTheDocument();
+
+  const title = screen.getByText('Jack the Giant Slayer');
+  const average = screen.getByText('5.8');
+  const cardElement = screen.getByRole(/card/i);
+
+  expect(title).toBeInTheDocument();
+  expect(average).toBeInTheDocument();
+  expect(cardElement).toBeInTheDocument();
 });

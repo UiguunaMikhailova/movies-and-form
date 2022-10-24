@@ -23,6 +23,8 @@ test('render card', async () => {
       </BrowserRouter>
     );
   });
-  expect(screen.getByRole(/card/i)).toHaveTextContent(/ivan/i);
-  expect(screen.getByRole(/card/i)).toBeInTheDocument();
+
+  const cardElement = screen.getByRole(/card/i);
+  expect(cardElement).toHaveTextContent(/ivan/i);
+  expect(cardElement).toBeInTheDocument();
 });

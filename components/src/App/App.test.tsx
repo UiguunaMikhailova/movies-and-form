@@ -11,6 +11,7 @@ test('render app', async () => {
       </BrowserRouter>
     );
   });
-  expect(screen.queryByText(/learn react/i)).not.toBeInTheDocument();
-  expect(screen.getByRole(/header/i)).toBeInTheDocument();
+
+  const header = screen.getByRole(/header/i);
+  expect(header).toBeInTheDocument();
 });

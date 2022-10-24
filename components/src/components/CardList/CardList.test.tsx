@@ -13,8 +13,11 @@ test('render cardList', async () => {
       </BrowserRouter>
     );
   });
-  expect(screen.getByText('Jack the Giant Slayer')).toBeInTheDocument();
+
   const cardsArray = screen.getAllByRole('card');
+  const title = screen.getByText('Jack the Giant Slayer');
+
+  expect(title).toBeInTheDocument();
   cardsArray.forEach((item) => {
     expect(item).toHaveTextContent(/jack/i);
   });

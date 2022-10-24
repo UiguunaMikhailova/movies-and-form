@@ -12,6 +12,7 @@ export default function Modal({
   function notCloseModal(e: React.MouseEvent<HTMLDivElement>) {
     e.stopPropagation();
   }
+
   return (
     <div className="overlay" onClick={closeModal}>
       <div

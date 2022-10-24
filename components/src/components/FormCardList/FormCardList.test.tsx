@@ -13,6 +13,7 @@ test('render form page', async () => {
       </BrowserRouter>
     );
   });
+
   const cardsArray = screen.getAllByRole('form-card');
   cardsArray.forEach((item) => {
     expect(item).toHaveTextContent(/ivan/i);

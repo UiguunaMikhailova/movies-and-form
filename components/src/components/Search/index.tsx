@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import './Search.css';
-import { defaultValue, searchUrl } from 'Constants/Constants';
+import { popularUrl, searchUrl } from 'Constants/Constants';
 import { SearchProps } from 'types/types';
 
 export default function Search({ searchCards }: SearchProps) {
-  const [value, setValue] = useState(localStorage.getItem('search') ?? defaultValue);
+  const [value, setValue] = useState(localStorage.getItem('search') ?? '');
   useEffect(() => {
-    searchCards(`${searchUrl}${value}`);
+    if (value.length) {
+      searchCards(`${searchUrl}${value}`);
+    } else {
+      searchCards(`${popularUrl}`);
+    }
   }, []);
   return (
     <input
@@ -21,7 +25,9 @@ export default function Search({ searchCards }: SearchProps) {
         localStorage.setItem('search', e.target.value);
       }}
       onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
-        e.key === 'Enter' && searchCards(`${searchUrl}${e.currentTarget.value}`)
+        e.key === 'Enter' &&
+        e.currentTarget.value.length &&
+        searchCards(`${searchUrl}${e.currentTarget.value}`)
       }
     />
   );

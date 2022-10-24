@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Home from '.';
 
 test('render home', async () => {
-  await act(() => {
+  await act(async () => {
     render(
       <BrowserRouter>
         <Home />
@@ -13,7 +13,9 @@ test('render home', async () => {
     );
   });
 
-  expect(screen.getByRole(/search/i)).toBeInTheDocument();
-  expect(screen.getByRole(/homePage/i)).toBeInTheDocument();
-  expect(screen.getByRole(/cardList/i)).toBeInTheDocument();
+  const search = screen.getByRole(/search/i);
+  const cardList = screen.getByRole(/cardList/i);
+
+  expect(search).toBeInTheDocument();
+  expect(cardList).toBeInTheDocument();
 });

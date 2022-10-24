@@ -10,7 +10,7 @@ import Home from 'Components/pages/home';
 
 describe('search component', () => {
   test('render search', async () => {
-    await act(() => {
+    await act(async () => {
       render(
         <BrowserRouter>
           <Header />
@@ -18,9 +18,11 @@ describe('search component', () => {
         </BrowserRouter>
       );
     });
+
     const input = screen.getByRole('search') as HTMLInputElement;
     const about = screen.getByRole('aboutLink');
     const home = screen.getByRole('homeLink');
+
     expect(input).toBeInTheDocument();
     await act(() => {
       fireEvent.change(input, { target: { value: 'qwerty' } });
@@ -32,19 +34,23 @@ describe('search component', () => {
 
   test('localStorage', () => {
     jest.spyOn(localStorage, 'setItem');
-    localStorage.setItem = jest.fn();
     jest.spyOn(Storage.prototype, 'setItem');
+    localStorage.setItem = jest.fn();
     Storage.prototype.setItem = jest.fn();
     const key = 'search';
     const value = 'qwerty';
     localStorage.setItem(key, value);
+
     expect(localStorage.getItem(key)).toEqual(value);
     expect(localStorage.setItem).toHaveBeenCalledTimes(1);
   });
 
   test('api requests', async () => {
     const getDataMock = jest.spyOn(API, 'getData');
-    await act(() => {
+    const title = screen.getByText('Jack the Giant Slayer');
+    const input = screen.getByRole('search');
+
+    await act(async () => {
       getDataMock.mockResolvedValue(cards);
     });
 
@@ -57,9 +63,9 @@ describe('search component', () => {
     });
 
     expect(getDataMock).toHaveBeenCalled();
-    expect(screen.getByText('Jack the Giant Slayer')).toBeInTheDocument();
-    const input = screen.getByRole('search');
-    await act(() => {
+    expect(title).toBeInTheDocument();
+
+    await act(async () => {
       fireEvent.input(input, {
         target: { value: 'harry' },
       });
@@ -67,6 +73,7 @@ describe('search component', () => {
         key: 'Enter',
       });
     });
+
     expect(getDataMock).toHaveBeenCalledWith(`${searchUrl}harry`);
   });
 });

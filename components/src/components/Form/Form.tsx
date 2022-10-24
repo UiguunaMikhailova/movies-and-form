@@ -27,11 +27,11 @@ export default function Form({ updateCards, save }: FormProps) {
   };
 
   return (
-    <div className="sign-in" role="form">
+    <div className="form-wrapper" role="form">
       <h3 className="form__title" id="form__title">
         Create personal card
       </h3>
-      <form className="sign-in__form form" onSubmit={handleSubmit(onSubmit)}>
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <div className="form__input-wrapper">
           <label className="form__label" htmlFor="name">
             Name

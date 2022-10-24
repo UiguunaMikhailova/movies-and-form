@@ -23,7 +23,7 @@ export default function CardList({ isLoading, cards }: CardListProps) {
           </ul>
         </div>
       ) : (
-        <div>Sorry, no movies were found by the request</div>
+        <div className="no-cards">Sorry, no movies were found by the request</div>
       )}
     </div>
   );

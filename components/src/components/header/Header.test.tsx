@@ -11,11 +11,18 @@ test('Render header', () => {
       <App />
     </BrowserRouter>
   );
-  expect(screen.getByRole('header')).toBeInTheDocument();
-  expect(screen.getByText('Home')).toBeInTheDocument();
-  expect(screen.getByText('About')).toBeInTheDocument();
-  expect(screen.getByRole('homePage')).toBeInTheDocument();
+
+  const header = screen.getByRole('header');
+  const home = screen.getByText('Home');
+  const homePage = screen.getByRole('homePage');
+  const about = screen.getByText('About');
   const aboutLink = screen.getByRole('aboutLink');
+  const aboutPage = screen.getByRole('aboutPage');
+
+  expect(header).toBeInTheDocument();
+  expect(home).toBeInTheDocument();
+  expect(about).toBeInTheDocument();
+  expect(homePage).toBeInTheDocument();
   fireEvent.click(aboutLink);
-  expect(screen.getByRole('aboutPage')).toBeInTheDocument();
+  expect(aboutPage).toBeInTheDocument();
 });

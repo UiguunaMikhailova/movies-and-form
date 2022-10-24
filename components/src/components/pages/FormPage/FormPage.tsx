@@ -7,6 +7,7 @@ import { CardForm } from 'types/types';
 export default function FormPage() {
   const [cards, setCards] = useState<CardForm[]>([]);
   const [save, setSave] = useState(false);
+
   function updateCards(card: CardForm) {
     setSave(true);
     setTimeout(() => {
@@ -14,6 +15,7 @@ export default function FormPage() {
       setCards([...cards, card]);
     }, 1000);
   }
+
   return (
     <Layout>
       <div className="home" role="formPage">
