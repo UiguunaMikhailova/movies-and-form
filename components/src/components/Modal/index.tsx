@@ -10,7 +10,7 @@ export default function Modal({
   overview,
 }: ModalProps) {
   return (
-    <div className="overlay close" onClick={(e) => closeModal(e)}>
+    <div className="overlay close" role="overlay" onClick={(e) => closeModal(e)}>
       <div className="modal">
         <div className="modal__close close" onClick={(e) => closeModal(e)}>
           <img
