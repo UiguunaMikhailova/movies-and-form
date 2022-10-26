@@ -56,6 +56,16 @@ type LayoutProps = {
 
 type ModalProps = Omit<CardProps, 'key'> & Modal;
 
+type State = {
+  cards: CardProps[];
+  isLoading: boolean;
+};
+
+type Action = {
+  type: string;
+  payload: Partial<State>;
+};
+
 export {
   CardProps,
   SearchProps,
@@ -66,4 +76,6 @@ export {
   LayoutProps,
   CardListProps,
   FormInputs,
+  State,
+  Action,
 };

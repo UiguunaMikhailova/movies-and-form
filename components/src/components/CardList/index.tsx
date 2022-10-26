@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Card from 'Components/Card';
-import { CardListProps, CardProps } from 'types';
+import { CardProps } from 'types';
 import './CardList.css';
+import { CardsContext } from 'App';
 
-export default function CardList({ isLoading, cards }: CardListProps) {
+export default function CardList() {
+  const cardsContext = useContext(CardsContext);
+  const { cards, isLoading } = cardsContext.state;
   return (
     <div role="cardList">
       {isLoading ? (

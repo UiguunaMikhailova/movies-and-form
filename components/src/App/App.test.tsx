@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { act, render, screen } from '@testing-library/react';
-import App from './App';
+import App from '.';
 
 test('render app', async () => {
   await act(() => {

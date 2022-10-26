@@ -1,25 +1,22 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Layout from 'Components/Layout';
 import Search from 'Components/Search';
 import CardList from 'Components/CardList';
 import { getData } from 'Requests';
 import './home.css';
+import { CardsContext } from 'App';
 
 export default function Home() {
-  const [cards, setCards] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const cardsContext = useContext(CardsContext);
 
   function searchCards(url: string) {
-    setIsLoading(true);
-    setCards([]);
+    cardsContext.dispatch({ type: 'setCards', payload: { cards: [], isLoading: false } });
 
     getData(url).then((data) => {
       if (data) {
-        setCards(data);
-        setIsLoading(false);
+        cardsContext.dispatch({ type: 'setCards', payload: { cards: data, isLoading: false } });
       } else {
-        setIsLoading(true);
-        setCards([]);
+        cardsContext.dispatch({ type: 'setCards', payload: { cards: [], isLoading: true } });
       }
     });
   }
@@ -28,7 +25,7 @@ export default function Home() {
     <Layout>
       <div className="home" role="homePage">
         <Search searchCards={searchCards} />
-        <CardList cards={cards} isLoading={isLoading} />
+        <CardList />
       </div>
     </Layout>
   );
