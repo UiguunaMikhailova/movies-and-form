@@ -9,13 +9,13 @@ import { Action, State } from 'types';
 
 export const CardsContext = React.createContext<{ state: State; dispatch: React.Dispatch<Action> }>(
   {
-    state: { cards: [], isLoading: false },
+    state: { cards: [], isLoading: false, searchValue: '' },
     dispatch: () => null,
   }
 );
 
 export default function App() {
-  const [state, dispatch] = useReducer(reducer, { cards: [], isLoading: false });
+  const [state, dispatch] = useReducer(reducer, { cards: [], isLoading: false, searchValue: '' });
   return (
     <CardsContext.Provider value={{ state, dispatch }}>
       <div className="App">

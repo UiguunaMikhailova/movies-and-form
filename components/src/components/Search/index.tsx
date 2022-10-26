@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { SearchProps } from 'types';
 import { popularUrl, searchUrl } from 'Constants';
 import './Search.css';
+import { CardsContext } from 'App';
 
 export default function Search({ searchCards }: SearchProps) {
-  const [value, setValue] = useState(localStorage.getItem('search') ?? '');
+  const cardsContext = useContext(CardsContext);
+  const { searchValue } = cardsContext.state;
   useEffect(() => {
-    if (value.length) {
-      searchCards(`${searchUrl}${value}`);
+    if (searchValue.length) {
+      searchCards(`${searchUrl}${searchValue}`);
     } else {
       searchCards(`${popularUrl}`);
     }
@@ -19,10 +21,9 @@ export default function Search({ searchCards }: SearchProps) {
       role="search"
       placeholder="Search..."
       autoFocus
-      value={value}
+      value={searchValue}
       onChange={(e) => {
-        setValue(e.target.value);
-        localStorage.setItem('search', e.target.value);
+        cardsContext.dispatch({ type: 'setCards', payload: { searchValue: e.target.value } });
       }}
       onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
         e.key === 'Enter' &&

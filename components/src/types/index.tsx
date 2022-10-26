@@ -59,6 +59,7 @@ type ModalProps = Omit<CardProps, 'key'> & Modal;
 type State = {
   cards: CardProps[];
   isLoading: boolean;
+  searchValue: string;
 };
 
 type Action = {
