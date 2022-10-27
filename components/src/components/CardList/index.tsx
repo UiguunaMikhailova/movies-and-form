@@ -3,6 +3,7 @@ import Card from 'Components/Card';
 import { CardProps } from 'types';
 import './CardList.css';
 import { Context } from 'App';
+import Pagination from 'Components/Pagination';
 
 export default function CardList() {
   const context = useContext(Context);

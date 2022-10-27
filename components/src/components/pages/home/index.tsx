@@ -5,14 +5,16 @@ import CardList from 'Components/CardList';
 import { getData } from 'Requests';
 import { Context } from 'App';
 import './home.css';
+import Pagination from 'Components/Pagination';
 
 export default function Home() {
   const context = useContext(Context);
+  const currPage = context.state.page;
 
-  function searchCards(url: string) {
+  function searchCards(url: string, page = currPage) {
     context.dispatch({ type: 'setCards', payload: { movies: [], isLoading: true } });
 
-    getData(url).then((data) => {
+    getData(`${url}&page=${page}`).then((data) => {
       if (data) {
         context.dispatch({ type: 'setCards', payload: { movies: data, isLoading: false } });
       } else {
@@ -26,6 +28,7 @@ export default function Home() {
       <div className="home" role="homePage">
         <Search searchCards={searchCards} />
         <CardList />
+        <Pagination searchCards={searchCards} />
       </div>
     </Layout>
   );

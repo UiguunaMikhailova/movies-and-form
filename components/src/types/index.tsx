@@ -9,7 +9,7 @@ type CardProps = {
 };
 
 type SearchProps = {
-  searchCards: (value: string) => void;
+  searchCards: (value: string, page?: number) => void;
 };
 
 type CardForm = {
@@ -48,6 +48,7 @@ type State = {
   searchValue: string;
   formCards: CardForm[];
   isSavingForm: boolean;
+  page: number;
 };
 
 type Action = {

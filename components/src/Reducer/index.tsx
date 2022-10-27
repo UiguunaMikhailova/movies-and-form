@@ -15,6 +15,7 @@ const initialState = {
   searchValue: '',
   formCards: [],
   isSavingForm: false,
+  page: 1,
 };
 
 export { reducer, initialState };
