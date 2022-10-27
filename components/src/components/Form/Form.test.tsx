@@ -5,7 +5,6 @@ import userEvent from '@testing-library/user-event';
 import '@testing-library/react/dont-cleanup-after-each';
 import Form from '.';
 
-const updateCards = jest.fn();
 global.URL.createObjectURL = jest.fn();
 
 describe('Form', () => {
@@ -13,7 +12,7 @@ describe('Form', () => {
     await act(async () => {
       render(
         <BrowserRouter>
-          <Form updateCards={updateCards} save={false} />
+          <Form />
         </BrowserRouter>
       );
     });

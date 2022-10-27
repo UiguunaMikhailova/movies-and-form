@@ -32,20 +32,6 @@ type FormInputs = {
   checkbox: boolean;
 };
 
-type CardListProps = {
-  cards: CardProps[];
-  isLoading: boolean;
-};
-
-type FormCardListProps = {
-  cards: CardForm[];
-};
-
-type FormProps = {
-  updateCards: (card: CardForm) => void;
-  save: boolean;
-};
-
 type Modal = {
   closeModal: (event: React.MouseEvent) => void;
 };
@@ -57,9 +43,11 @@ type LayoutProps = {
 type ModalProps = Omit<CardProps, 'key'> & Modal;
 
 type State = {
-  cards: CardProps[];
+  movies: CardProps[];
   isLoading: boolean;
   searchValue: string;
+  formCards: CardForm[];
+  isSavingForm: boolean;
 };
 
 type Action = {
@@ -67,16 +55,4 @@ type Action = {
   payload: Partial<State>;
 };
 
-export {
-  CardProps,
-  SearchProps,
-  CardForm,
-  FormCardListProps,
-  FormProps,
-  ModalProps,
-  LayoutProps,
-  CardListProps,
-  FormInputs,
-  State,
-  Action,
-};
+export { CardProps, SearchProps, CardForm, ModalProps, LayoutProps, FormInputs, State, Action };

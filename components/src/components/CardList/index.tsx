@@ -2,19 +2,19 @@ import React, { useContext } from 'react';
 import Card from 'Components/Card';
 import { CardProps } from 'types';
 import './CardList.css';
-import { CardsContext } from 'App';
+import { Context } from 'App';
 
 export default function CardList() {
-  const cardsContext = useContext(CardsContext);
-  const { cards, isLoading } = cardsContext.state;
+  const context = useContext(Context);
+  const { movies, isLoading } = context.state;
   return (
     <div role="cardList">
       {isLoading ? (
         <div className="loading">Loading</div>
-      ) : cards.length ? (
+      ) : movies.length ? (
         <div>
           <ul className="films">
-            {cards.map((item: CardProps, index) => (
+            {movies.map((item: CardProps, index) => (
               <Card
                 key={index}
                 title={item.title}

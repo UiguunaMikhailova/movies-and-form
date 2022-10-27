@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { COUNTRIES } from 'Constants';
-import { FormInputs, FormProps } from 'types';
+import { CardForm, FormInputs } from 'types';
+import { Context } from 'App';
 import './Form.css';
 
-export default function Form({ updateCards, save }: FormProps) {
+export default function Form() {
+  const context = useContext(Context);
+  const { isSavingForm, formCards } = context.state;
+
   const {
     register,
     handleSubmit,
@@ -25,6 +29,14 @@ export default function Form({ updateCards, save }: FormProps) {
     reset();
     setValue('checkbox', false);
   };
+
+  function updateCards(card: CardForm) {
+    context.dispatch({ type: 'setCards', payload: { isSavingForm: true } });
+    setTimeout(() => {
+      context.dispatch({ type: 'setCards', payload: { isSavingForm: false } });
+      context.dispatch({ type: 'setCards', payload: { formCards: [...formCards, card] } });
+    }, 1000);
+  }
 
   return (
     <div className="form-wrapper" role="form">
@@ -143,7 +155,7 @@ export default function Form({ updateCards, save }: FormProps) {
           Submit
         </button>
       </form>
-      <p hidden={!save} className="form__title">
+      <p hidden={!isSavingForm} className="form__title">
         Creating the card...
       </p>
     </div>

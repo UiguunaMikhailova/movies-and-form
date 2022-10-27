@@ -3,13 +3,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { act, render, screen } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
 import FormCardList from '.';
-import { formCards } from 'Constants';
 
 test('render form page', async () => {
   await act(() => {
     render(
       <BrowserRouter>
-        <FormCardList cards={formCards} />
+        <FormCardList />
       </BrowserRouter>
     );
   });

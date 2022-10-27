@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import FormCard from 'Components/FormCard';
-import { FormCardListProps } from 'types';
+import { Context } from 'App';
 import './FormCardList.css';
 
-export default function FormCardList({ cards }: FormCardListProps) {
+export default function FormCardList() {
+  const context = useContext(Context);
+  const { formCards } = context.state;
   return (
     <ul role="formCardList" className="form-card-list">
-      {cards.map((item, index) => {
+      {formCards.map((item, index) => {
         return (
           <FormCard
             key={index}

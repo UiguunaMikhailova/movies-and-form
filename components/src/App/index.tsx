@@ -7,17 +7,21 @@ import NotFound from 'Components/pages/NotFound';
 import { reducer } from 'Reducer';
 import { Action, State } from 'types';
 
-export const CardsContext = React.createContext<{ state: State; dispatch: React.Dispatch<Action> }>(
-  {
-    state: { cards: [], isLoading: false, searchValue: '' },
-    dispatch: () => null,
-  }
-);
+export const Context = React.createContext<{ state: State; dispatch: React.Dispatch<Action> }>({
+  state: { movies: [], isLoading: false, searchValue: '', formCards: [], isSavingForm: false },
+  dispatch: () => null,
+});
 
 export default function App() {
-  const [state, dispatch] = useReducer(reducer, { cards: [], isLoading: false, searchValue: '' });
+  const [state, dispatch] = useReducer(reducer, {
+    movies: [],
+    isLoading: false,
+    searchValue: '',
+    formCards: [],
+    isSavingForm: false,
+  });
   return (
-    <CardsContext.Provider value={{ state, dispatch }}>
+    <Context.Provider value={{ state, dispatch }}>
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -26,6 +30,6 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
-    </CardsContext.Provider>
+    </Context.Provider>
   );
 }

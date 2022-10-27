@@ -2,11 +2,11 @@ import React, { useContext, useEffect } from 'react';
 import { SearchProps } from 'types';
 import { popularUrl, searchUrl } from 'Constants';
 import './Search.css';
-import { CardsContext } from 'App';
+import { Context } from 'App';
 
 export default function Search({ searchCards }: SearchProps) {
-  const cardsContext = useContext(CardsContext);
-  const { searchValue } = cardsContext.state;
+  const context = useContext(Context);
+  const { searchValue } = context.state;
   useEffect(() => {
     if (searchValue.length) {
       searchCards(`${searchUrl}${searchValue}`);
@@ -23,7 +23,7 @@ export default function Search({ searchCards }: SearchProps) {
       autoFocus
       value={searchValue}
       onChange={(e) => {
-        cardsContext.dispatch({ type: 'setCards', payload: { searchValue: e.target.value } });
+        context.dispatch({ type: 'setCards', payload: { searchValue: e.target.value } });
       }}
       onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
         e.key === 'Enter' &&

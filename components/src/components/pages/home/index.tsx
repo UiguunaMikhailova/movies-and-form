@@ -3,20 +3,20 @@ import Layout from 'Components/Layout';
 import Search from 'Components/Search';
 import CardList from 'Components/CardList';
 import { getData } from 'Requests';
+import { Context } from 'App';
 import './home.css';
-import { CardsContext } from 'App';
 
 export default function Home() {
-  const cardsContext = useContext(CardsContext);
+  const context = useContext(Context);
 
   function searchCards(url: string) {
-    cardsContext.dispatch({ type: 'setCards', payload: { cards: [], isLoading: false } });
+    context.dispatch({ type: 'setCards', payload: { movies: [], isLoading: true } });
 
     getData(url).then((data) => {
       if (data) {
-        cardsContext.dispatch({ type: 'setCards', payload: { cards: data, isLoading: false } });
+        context.dispatch({ type: 'setCards', payload: { movies: data, isLoading: false } });
       } else {
-        cardsContext.dispatch({ type: 'setCards', payload: { cards: [], isLoading: true } });
+        context.dispatch({ type: 'setCards', payload: { movies: [], isLoading: true } });
       }
     });
   }
