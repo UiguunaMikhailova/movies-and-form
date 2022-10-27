@@ -4,22 +4,16 @@ import About from 'Components/pages/about';
 import Home from 'Components/pages/home';
 import FormPage from 'Components/pages/FormPage';
 import NotFound from 'Components/pages/NotFound';
-import { reducer } from 'Reducer';
-import { Action, State } from 'types';
+import { initialState, reducer } from 'Reducer';
+import { TContext } from 'types';
 
-export const Context = React.createContext<{ state: State; dispatch: React.Dispatch<Action> }>({
-  state: { movies: [], isLoading: false, searchValue: '', formCards: [], isSavingForm: false },
+export const Context = React.createContext<TContext>({
+  state: initialState,
   dispatch: () => null,
 });
 
 export default function App() {
-  const [state, dispatch] = useReducer(reducer, {
-    movies: [],
-    isLoading: false,
-    searchValue: '',
-    formCards: [],
-    isSavingForm: false,
-  });
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <Context.Provider value={{ state, dispatch }}>
       <div className="App">

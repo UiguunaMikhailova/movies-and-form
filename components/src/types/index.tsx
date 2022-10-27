@@ -55,4 +55,19 @@ type Action = {
   payload: Partial<State>;
 };
 
-export { CardProps, SearchProps, CardForm, ModalProps, LayoutProps, FormInputs, State, Action };
+type TContext = {
+  state: State;
+  dispatch: React.Dispatch<Action>;
+};
+
+export {
+  CardProps,
+  SearchProps,
+  CardForm,
+  ModalProps,
+  LayoutProps,
+  FormInputs,
+  State,
+  Action,
+  TContext,
+};

@@ -7,6 +7,7 @@ import { Context } from 'App';
 export default function CardList() {
   const context = useContext(Context);
   const { movies, isLoading } = context.state;
+
   return (
     <div role="cardList">
       {isLoading ? (
@@ -14,7 +15,7 @@ export default function CardList() {
       ) : movies.length ? (
         <div>
           <ul className="films">
-            {movies.map((item: CardProps, index) => (
+            {movies.map((item: CardProps, index: number) => (
               <Card
                 key={index}
                 title={item.title}

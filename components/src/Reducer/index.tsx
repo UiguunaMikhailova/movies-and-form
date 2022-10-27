@@ -9,4 +9,12 @@ function reducer(state: State, action: Action) {
   }
 }
 
-export { reducer };
+const initialState = {
+  movies: [],
+  isLoading: false,
+  searchValue: '',
+  formCards: [],
+  isSavingForm: false,
+};
+
+export { reducer, initialState };
