@@ -11,14 +11,23 @@ export default function Home() {
   const context = useContext(Context);
   const currPage = context.state.page;
 
-  function searchCards(url: string, page = currPage) {
-    context.dispatch({ type: 'setCards', payload: { movies: [], isLoading: true } });
+  function searchCards(url: string, pageNumber = currPage) {
+    context.dispatch({
+      type: 'setCards',
+      payload: { movies: [], isLoading: true, page: pageNumber },
+    });
 
-    getData(`${url}&page=${page}`).then((data) => {
+    getData(`${url}&page=${pageNumber}`).then((data) => {
       if (data) {
-        context.dispatch({ type: 'setCards', payload: { movies: data, isLoading: false } });
+        context.dispatch({
+          type: 'setCards',
+          payload: { movies: data.results, isLoading: false, totalPages: data.total_pages },
+        });
       } else {
-        context.dispatch({ type: 'setCards', payload: { movies: [], isLoading: true } });
+        context.dispatch({
+          type: 'setCards',
+          payload: { movies: [], isLoading: true },
+        });
       }
     });
   }

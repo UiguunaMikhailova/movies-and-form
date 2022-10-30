@@ -16,6 +16,7 @@ const initialState = {
   formCards: [],
   isSavingForm: false,
   page: 1,
+  totalPages: 0,
 };
 
 export { reducer, initialState };

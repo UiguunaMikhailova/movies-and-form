@@ -49,6 +49,7 @@ type State = {
   formCards: CardForm[];
   isSavingForm: boolean;
   page: number;
+  totalPages: number;
 };
 
 type Action = {
