@@ -52,6 +52,12 @@ type State = {
   page: number;
   totalPages: number;
   sort: string;
+  formName: string;
+  formSurname: string;
+  formDate: string;
+  formCountry: string;
+  formGender: string;
+  formCheckbox: boolean;
 };
 
 type Action = {

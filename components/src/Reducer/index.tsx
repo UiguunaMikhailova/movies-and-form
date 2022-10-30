@@ -18,6 +18,12 @@ const initialState = {
   page: 1,
   totalPages: 0,
   sort: '',
+  formName: '',
+  formSurname: '',
+  formDate: '',
+  formCountry: '',
+  formGender: '',
+  formCheckbox: false,
 };
 
 export { reducer, initialState };

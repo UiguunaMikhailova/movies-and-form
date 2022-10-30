@@ -7,15 +7,41 @@ import './Form.css';
 
 export default function Form() {
   const context = useContext(Context);
-  const { isSavingForm, formCards } = context.state;
+  const {
+    isSavingForm,
+    formCards,
+    formName,
+    formSurname,
+    formDate,
+    formGender,
+    formCountry,
+    formCheckbox,
+  } = context.state;
 
   const {
     register,
     handleSubmit,
     reset,
     setValue,
+    watch,
     formState: { errors, isDirty },
   } = useForm<FormInputs>({ mode: 'onChange' });
+
+  React.useEffect(() => {
+    watch((value) =>
+      context.dispatch({
+        type: 'setCards',
+        payload: {
+          formName: value.name,
+          formSurname: value.surname,
+          formDate: value.date,
+          formCountry: value.country,
+          formGender: value.gender,
+          formCheckbox: value.checkbox,
+        },
+      })
+    );
+  }, [watch]);
 
   const onSubmit = (data: FormInputs) => {
     updateCards({
@@ -54,6 +80,7 @@ export default function Form() {
           className="form__input"
           type="text"
           placeholder="Your name..."
+          value={formName}
           {...register('name', { required: true })}
         />
         <div className="form__input-wrapper">
@@ -70,6 +97,7 @@ export default function Form() {
           className="form__input"
           type="text"
           placeholder="Your surname..."
+          value={formSurname}
           {...register('surname', { required: true })}
         />
         <div className="form__input-wrapper">
@@ -86,6 +114,7 @@ export default function Form() {
           className="form__input"
           type="date"
           role="date"
+          value={formDate}
           {...register('date', { required: true })}
         />
         <div className="form__input-wrapper">
@@ -93,7 +122,7 @@ export default function Form() {
             Country
           </label>
         </div>
-        <select className="form__input" role="country" {...register('country')}>
+        <select className="form__input" role="country" value={formCountry} {...register('country')}>
           {COUNTRIES.map((item, index) => {
             return (
               <option key={index} value={item}>
@@ -109,12 +138,18 @@ export default function Form() {
               type="radio"
               value="male"
               role="gender"
+              checked={formGender === 'male'}
               {...register('gender', { required: true })}
             />
             <label htmlFor="male">Male</label>
           </div>
           <div className="form__input-wrapper">
-            <input type="radio" value="female" {...register('gender', { required: true })} />
+            <input
+              type="radio"
+              value="female"
+              checked={formGender === 'female'}
+              {...register('gender', { required: true })}
+            />
             <label htmlFor="female">Female</label>
           </div>
           {errors.gender && (
@@ -138,8 +173,13 @@ export default function Form() {
           </p>
         )}
         <label className="form__label">
-          <input type="checkbox" role="checkbox" {...register('checkbox', { required: true })} />I
-          consent to my personal data
+          <input
+            type="checkbox"
+            role="checkbox"
+            checked={formCheckbox}
+            {...register('checkbox', { required: true })}
+          />
+          I consent to my personal data
         </label>
         {errors.checkbox && (
           <p className="form__error-msg" role="error-message">
