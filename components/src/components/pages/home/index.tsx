@@ -1,17 +1,19 @@
 import React, { useContext } from 'react';
+import { Context } from 'App';
 import Layout from 'Components/Layout';
 import Search from 'Components/Search';
 import CardList from 'Components/CardList';
-import { getData } from 'Requests';
-import { Context } from 'App';
-import './home.css';
 import Pagination from 'Components/Pagination';
+import Sort from 'Components/Sort';
+import { getData } from 'Requests';
+import { sortItems } from 'Helpers';
+import './home.css';
 
 export default function Home() {
   const context = useContext(Context);
-  const currPage = context.state.page;
+  const { page, sort } = context.state;
 
-  function searchCards(url: string, pageNumber = currPage) {
+  function searchCards(url: string, pageNumber = page, sortString = sort) {
     context.dispatch({
       type: 'setCards',
       payload: { movies: [], isLoading: true, page: pageNumber },
@@ -21,7 +23,11 @@ export default function Home() {
       if (data) {
         context.dispatch({
           type: 'setCards',
-          payload: { movies: data.results, isLoading: false, totalPages: data.total_pages },
+          payload: {
+            movies: sortItems(sortString, data.results),
+            isLoading: false,
+            totalPages: data.total_pages,
+          },
         });
       } else {
         context.dispatch({
@@ -36,6 +42,7 @@ export default function Home() {
     <Layout>
       <div className="home" role="homePage">
         <Search searchCards={searchCards} />
+        <Sort searchCards={searchCards} />
         <CardList />
         <Pagination searchCards={searchCards} />
       </div>

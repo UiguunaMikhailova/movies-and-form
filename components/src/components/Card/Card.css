@@ -21,6 +21,10 @@
   cursor: pointer;
 }
 
+.movie__picture-wrapper {
+  height: 370px;
+}
+
 .movie__picture {
   width: 100%;
   height: 100%;

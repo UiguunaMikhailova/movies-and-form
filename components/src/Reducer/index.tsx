@@ -17,6 +17,7 @@ const initialState = {
   isSavingForm: false,
   page: 1,
   totalPages: 0,
+  sort: '',
 };
 
 export { reducer, initialState };

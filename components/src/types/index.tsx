@@ -10,7 +10,7 @@ type CardProps = {
 };
 
 type SearchProps = {
-  searchCards: (value: string, page?: number) => void;
+  searchCards: (value: string, page?: number, sort?: string) => void;
 };
 
 type CardForm = {
@@ -51,6 +51,7 @@ type State = {
   isSavingForm: boolean;
   page: number;
   totalPages: number;
+  sort: string;
 };
 
 type Action = {
