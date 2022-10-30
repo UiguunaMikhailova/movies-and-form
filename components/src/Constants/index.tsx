@@ -5,6 +5,7 @@ const cards = [
     poster_path: '/xLbVsFpAlwf6khU3gG1yaRBPeC.jpg',
     title: 'Jack the Giant Slayer',
     vote_average: 5.8,
+    vote_count: 12934,
   },
   {
     overview:
@@ -12,6 +13,7 @@ const cards = [
     poster_path: '/bvCEEs5l3ylNIgH4foqOmQk0qdi.jpg',
     title: 'Jack Reacher: Never Go Back',
     vote_average: 5.9,
+    vote_count: 12934,
   },
   {
     overview:
@@ -19,6 +21,7 @@ const cards = [
     poster_path: '/kFeAxmZvu0TE4iuLRHQD6Cej8Wf.jpg',
     title: 'Jack and Jill',
     vote_average: 4.3,
+    vote_count: 12934,
   },
 ];
 

@@ -17,6 +17,7 @@ test('render modal and closeModal function be called after click on overlay', as
           title={card.title}
           poster_path={card.poster_path}
           vote_average={card.vote_average}
+          vote_count={card.vote_count}
           overview={card.overview}
         />
       </BrowserRouter>

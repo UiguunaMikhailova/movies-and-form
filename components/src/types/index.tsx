@@ -6,6 +6,7 @@ type CardProps = {
   poster_path: string;
   vote_average: number;
   overview: string;
+  vote_count: number;
 };
 
 type SearchProps = {

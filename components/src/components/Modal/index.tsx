@@ -8,6 +8,7 @@ export default function Modal({
   poster_path,
   vote_average,
   overview,
+  vote_count,
 }: ModalProps) {
   return (
     <div className="overlay close" role="overlay" onClick={(e) => closeModal(e)}>
@@ -24,8 +25,15 @@ export default function Modal({
           </div>
           <div className="modal__content">
             <div className="modal__title">{title}</div>
-            <div className="modal__subtitle">Raiting: {vote_average}</div>
-            <div className="modal__subtitle">Overview: {overview}</div>
+            <div className="movie__rating-wrapper">
+              <span className="movie__rating-text">
+                Raiting: <div className="movie__rating">{vote_average}</div>
+              </span>
+              <span className="movie__rating-text">
+                Vote count: <div className="movie__rating">{vote_count}</div>
+              </span>
+            </div>
+            <div className="modal__overview">Overview: {overview}</div>
           </div>
         </div>
       </div>

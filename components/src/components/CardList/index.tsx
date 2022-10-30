@@ -3,7 +3,6 @@ import Card from 'Components/Card';
 import { CardProps } from 'types';
 import './CardList.css';
 import { Context } from 'App';
-import Pagination from 'Components/Pagination';
 
 export default function CardList() {
   const context = useContext(Context);
@@ -22,6 +21,7 @@ export default function CardList() {
                 title={item.title}
                 poster_path={item.poster_path}
                 vote_average={item.vote_average}
+                vote_count={item.vote_count}
                 overview={item.overview}
               />
             ))}

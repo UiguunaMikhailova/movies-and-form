@@ -82,10 +82,10 @@
   margin-bottom: 10px;
 }
 
-.modal__subtitle {
+.modal__overview {
   font-size: 20px;
   line-height: 23px;
   letter-spacing: 1px;
   color: #000000;
-  margin-bottom: 20px;
+  margin-top: 10px;
 }
