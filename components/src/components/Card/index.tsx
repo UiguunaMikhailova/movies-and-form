@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Context } from 'App';
+import { Context } from 'Context';
 import { movieDefaultPoster } from 'Constants';
 import { CardProps } from 'types';
 import './Card.css';

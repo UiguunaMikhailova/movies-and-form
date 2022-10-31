@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Card from 'Components/Card';
-import { Context } from 'App';
+import { Context } from 'Context';
 import { CardProps } from 'types';
 import './CardList.css';
 

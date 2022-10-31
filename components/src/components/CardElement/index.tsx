@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
-import { Context } from 'App';
+import { Context } from 'Context';
 import './CardElement.css';
 
 export default function CardElement() {

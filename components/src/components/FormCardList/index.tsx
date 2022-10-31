@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import FormCard from 'Components/FormCard';
-import { Context } from 'App';
+import { Context } from 'Context';
 import './FormCardList.css';
 
 export default function FormCardList() {

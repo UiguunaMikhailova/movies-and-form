@@ -11,7 +11,7 @@ function reducer(state: State, action: Action) {
   }
 }
 
-const initialState = {
+const initialState: State = {
   movies: [],
   isLoading: false,
   searchValue: '',

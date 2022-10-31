@@ -6,12 +6,7 @@ import FormPage from 'Components/pages/FormPage';
 import NotFound from 'Components/pages/NotFound';
 import CardElement from 'Components/CardElement';
 import { initialState, reducer } from 'Reducer';
-import { TContext } from 'types';
-
-export const Context = React.createContext<TContext>({
-  state: initialState,
-  dispatch: () => null,
-});
+import { Context } from 'Context';
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);

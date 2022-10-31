@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Context } from 'App';
+import { Context } from 'Context';
 import { ACTIONTYPE, SearchProps } from 'types';
 import { moviesCountArray, popularUrl, searchUrl } from 'Constants';
 import './Sort.css';

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { COUNTRIES } from 'Constants';
-import { Context } from 'App';
+import { Context } from 'Context';
 import { ACTIONTYPE, CardForm, FormInputs } from 'types';
 import './Form.css';
 

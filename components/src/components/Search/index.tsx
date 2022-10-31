@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Context } from 'App';
+import { Context } from 'Context';
 import { ACTIONTYPE, SearchProps } from 'types';
 import { popularUrl, searchUrl } from 'Constants';
 import './Search.css';
