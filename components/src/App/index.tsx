@@ -4,6 +4,7 @@ import About from 'Components/pages/about';
 import Home from 'Components/pages/home';
 import FormPage from 'Components/pages/FormPage';
 import NotFound from 'Components/pages/NotFound';
+import CardElement from 'Components/CardElement';
 import { initialState, reducer } from 'Reducer';
 import { TContext } from 'types';
 
@@ -18,6 +19,7 @@ export default function App() {
     <Context.Provider value={{ state, dispatch }}>
       <div className="App">
         <Routes>
+          <Route path={`movies/page=${state.page}&id=:id`} element={<CardElement />} />
           <Route path="/" element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="form" element={<FormPage />} />

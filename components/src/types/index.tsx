@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 
 type CardProps = {
   key?: number;
+  id: number;
   title: string;
   poster_path: string;
   vote_average: number;
@@ -33,15 +34,9 @@ type FormInputs = {
   checkbox: boolean;
 };
 
-type Modal = {
-  closeModal: (event: React.MouseEvent) => void;
-};
-
 type LayoutProps = {
   children: ReactNode;
 };
-
-type ModalProps = Omit<CardProps, 'key'> & Modal;
 
 type State = {
   movies: CardProps[];
@@ -70,14 +65,4 @@ type TContext = {
   dispatch: React.Dispatch<Action>;
 };
 
-export {
-  CardProps,
-  SearchProps,
-  CardForm,
-  ModalProps,
-  LayoutProps,
-  FormInputs,
-  State,
-  Action,
-  TContext,
-};
+export { CardProps, SearchProps, CardForm, LayoutProps, FormInputs, State, Action, TContext };

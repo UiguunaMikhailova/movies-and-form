@@ -11,6 +11,7 @@ test('render card', async () => {
       <BrowserRouter>
         <Card
           key={0}
+          id={0}
           title={card.title}
           poster_path={card.poster_path}
           vote_average={card.vote_average}

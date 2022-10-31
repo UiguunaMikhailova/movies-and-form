@@ -1,3 +1,12 @@
+const apiKey = '0d5da78d3ffd7f7454f49e8eb45260f5';
+
+const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`;
+
+const popularUrl = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${apiKey}`;
+
+const movieDefaultPoster =
+  'https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bW92aWV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60';
+
 const cards = [
   {
     overview:
@@ -53,12 +62,6 @@ const formCards = [
     file: '',
   },
 ];
-
-const apiKey = '0d5da78d3ffd7f7454f49e8eb45260f5';
-
-const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`;
-
-const popularUrl = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${apiKey}`;
 
 const COUNTRIES = [
   'Afghanistan',
@@ -268,4 +271,4 @@ const COUNTRIES = [
   'Zimbabwe',
 ];
 
-export { cards, card, searchUrl, formCards, popularUrl, COUNTRIES };
+export { cards, card, searchUrl, formCards, popularUrl, COUNTRIES, movieDefaultPoster };

@@ -18,6 +18,7 @@ export default function CardList() {
             {movies.map((item: CardProps, index: number) => (
               <Card
                 key={index}
+                id={index}
                 title={item.title}
                 poster_path={item.poster_path}
                 vote_average={item.vote_average}
