@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { Context } from 'App';
-import { SearchProps } from 'types';
+import { ACTIONTYPE, SearchProps } from 'types';
 import { popularUrl, searchUrl } from 'Constants';
 import './Search.css';
 
@@ -25,7 +25,7 @@ export default function Search({ searchCards }: SearchProps) {
       autoFocus
       value={searchValue}
       onChange={(e) => {
-        context.dispatch({ type: 'setCards', payload: { searchValue: e.target.value } });
+        context.dispatch({ type: ACTIONTYPE.SETCARDS, payload: { searchValue: e.target.value } });
       }}
       onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
         e.key === 'Enter' &&

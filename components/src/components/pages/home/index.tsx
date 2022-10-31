@@ -7,31 +7,33 @@ import Sort from 'Components/Sort';
 import { Context } from 'App';
 import { getData } from 'Requests';
 import { sortItems } from 'Helpers';
+import { ACTIONTYPE } from 'types';
 import './home.css';
 
 export default function Home() {
   const context = useContext(Context);
-  const { page, sort } = context.state;
+  const { page, sort, moviesCount } = context.state;
 
-  function searchCards(url: string, pageNumber = page, sortString = sort) {
+  function searchCards(url: string, pageNumber = page, sortString = sort, count = moviesCount) {
     context.dispatch({
-      type: 'setCards',
+      type: ACTIONTYPE.SETCARDS,
       payload: { movies: [], isLoading: true, page: pageNumber },
     });
 
     getData(`${url}&page=${pageNumber}`).then((data) => {
       if (data) {
+        const cutMovies = data.results.slice(0, count);
         context.dispatch({
-          type: 'setCards',
+          type: ACTIONTYPE.SETCARDS,
           payload: {
-            movies: sortItems(sortString, data.results),
+            movies: sortItems(sortString, cutMovies),
             isLoading: false,
             totalPages: data.total_pages,
           },
         });
       } else {
         context.dispatch({
-          type: 'setCards',
+          type: ACTIONTYPE.SETCARDS,
           payload: { movies: [], isLoading: true },
         });
       }

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Context } from 'App';
-import { SearchProps } from 'types';
+import { ACTIONTYPE, SearchProps } from 'types';
 import { popularUrl, searchUrl } from 'Constants';
 import './Pagination.css';
 
@@ -11,7 +11,7 @@ export default function Pagination({ searchCards }: SearchProps) {
   const currPage = context.state.page;
 
   function paginate(pageNumber: number) {
-    context.dispatch({ type: 'setCards', payload: { page: pageNumber } });
+    context.dispatch({ type: ACTIONTYPE.SETCARDS, payload: { page: pageNumber } });
     if (searchValue.length) {
       searchCards(`${searchUrl}${searchValue}`, pageNumber);
     } else {

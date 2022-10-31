@@ -30,13 +30,18 @@
 }
 
 .pagination__text {
-  font-size: 22px;
+  font-size: 18px;
   width: 180px;
+  text-align: center;
 }
 
 .pagination__input {
   width: 50px;
-  padding: 0;
+  border: 1px solid var(--clr4);
+  padding: 0 3px;
+  border-radius: 15px;
+  background-color: var(--clr1);
+  font-size: 18px;
 }
 
 .curr-page {

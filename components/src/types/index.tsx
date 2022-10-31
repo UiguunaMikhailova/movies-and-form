@@ -16,7 +16,7 @@ type CardProps = {
 };
 
 type SearchProps = {
-  searchCards: (value: string, page?: number, sort?: string) => void;
+  searchCards: (value: string, page?: number, sort?: string, count?: number) => void;
 };
 
 type CardForm = {
@@ -52,6 +52,7 @@ type State = {
   page: number;
   totalPages: number;
   sort: string;
+  moviesCount: number;
   formName: string;
   formSurname: string;
   formDate: string;

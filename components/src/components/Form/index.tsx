@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { COUNTRIES } from 'Constants';
 import { Context } from 'App';
-import { CardForm, FormInputs } from 'types';
+import { ACTIONTYPE, CardForm, FormInputs } from 'types';
 import './Form.css';
 
 export default function Form() {
@@ -30,7 +30,7 @@ export default function Form() {
   React.useEffect(() => {
     watch((value) =>
       context.dispatch({
-        type: 'setForm',
+        type: ACTIONTYPE.SETFORM,
         payload: {
           formName: value.name,
           formSurname: value.surname,
@@ -57,10 +57,10 @@ export default function Form() {
   };
 
   function updateCards(card: CardForm) {
-    context.dispatch({ type: 'setForm', payload: { isSavingForm: true } });
+    context.dispatch({ type: ACTIONTYPE.SETFORM, payload: { isSavingForm: true } });
     setTimeout(() => {
-      context.dispatch({ type: 'setForm', payload: { isSavingForm: false } });
-      context.dispatch({ type: 'setForm', payload: { formCards: [...formCards, card] } });
+      context.dispatch({ type: ACTIONTYPE.SETFORM, payload: { isSavingForm: false } });
+      context.dispatch({ type: ACTIONTYPE.SETFORM, payload: { formCards: [...formCards, card] } });
     }, 1000);
   }
 
