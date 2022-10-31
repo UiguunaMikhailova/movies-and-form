@@ -6,7 +6,6 @@ import './Sort.css';
 
 export default function Sort({ searchCards }: SearchProps) {
   const context = useContext(Context);
-
   const { searchValue, page, sort } = context.state;
 
   function sortMovies(e: React.ChangeEvent<HTMLSelectElement>) {
@@ -20,6 +19,7 @@ export default function Sort({ searchCards }: SearchProps) {
       searchCards(`${popularUrl}`, page, e.currentTarget.value);
     }
   }
+
   return (
     <div className="sort">
       <select

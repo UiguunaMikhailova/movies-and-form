@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import Card from 'Components/Card';
+import { Context } from 'App';
 import { CardProps } from 'types';
 import './CardList.css';
-import { Context } from 'App';
 
 export default function CardList() {
   const context = useContext(Context);

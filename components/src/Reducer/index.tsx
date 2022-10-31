@@ -1,8 +1,10 @@
-import { Action, State } from 'types';
+import { ACTIONTYPE, Action, State } from 'types';
 
 function reducer(state: State, action: Action) {
   switch (action.type) {
-    case 'setCards':
+    case ACTIONTYPE.SETCARDS:
+      return { ...state, ...action.payload };
+    case ACTIONTYPE.SETFORM:
       return { ...state, ...action.payload };
     default:
       return state;

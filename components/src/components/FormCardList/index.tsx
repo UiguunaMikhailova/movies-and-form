@@ -6,6 +6,7 @@ import './FormCardList.css';
 export default function FormCardList() {
   const context = useContext(Context);
   const { formCards } = context.state;
+
   return (
     <ul role="formCardList" className="form-card-list">
       {formCards.map((item, index) => {

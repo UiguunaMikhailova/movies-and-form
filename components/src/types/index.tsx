@@ -1,5 +1,10 @@
 import React, { ReactNode } from 'react';
 
+enum ACTIONTYPE {
+  SETCARDS = 'setCards',
+  SETFORM = 'setForm',
+}
+
 type CardProps = {
   key?: number;
   id: number;
@@ -65,4 +70,14 @@ type TContext = {
   dispatch: React.Dispatch<Action>;
 };
 
-export { CardProps, SearchProps, CardForm, LayoutProps, FormInputs, State, Action, TContext };
+export {
+  CardProps,
+  SearchProps,
+  CardForm,
+  LayoutProps,
+  FormInputs,
+  State,
+  Action,
+  TContext,
+  ACTIONTYPE,
+};

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Context } from 'App';
-import './Pagination.css';
 import { SearchProps } from 'types';
 import { popularUrl, searchUrl } from 'Constants';
+import './Pagination.css';
 
 export default function Pagination({ searchCards }: SearchProps) {
   const context = useContext(Context);

@@ -1,44 +1,44 @@
 .pagination {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .pagination-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    padding: 30px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 30px 0;
 }
 
 .pagination__btn {
-    width: 35px;
-    height: 35px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .pagination__btn svg {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .pagination__btn:disabled svg {
-    width: 0%;
+  width: 0%;
 }
 
 .pagination__text {
-    font-size: 22px;
-    width: 180px;
+  font-size: 22px;
+  width: 180px;
 }
 
 .pagination__input {
-    width: 50px;
-    padding: 0;
+  width: 50px;
+  padding: 0;
 }
 
 .curr-page {
-    font-size: 24px;
+  font-size: 24px;
 }

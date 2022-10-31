@@ -1,12 +1,13 @@
 import React, { useContext, useEffect } from 'react';
+import { Context } from 'App';
 import { SearchProps } from 'types';
 import { popularUrl, searchUrl } from 'Constants';
 import './Search.css';
-import { Context } from 'App';
 
 export default function Search({ searchCards }: SearchProps) {
   const context = useContext(Context);
   const { searchValue } = context.state;
+
   useEffect(() => {
     if (searchValue.length) {
       searchCards(`${searchUrl}${searchValue}`);
@@ -14,6 +15,7 @@ export default function Search({ searchCards }: SearchProps) {
       searchCards(`${popularUrl}`);
     }
   }, []);
+
   return (
     <input
       className="input"

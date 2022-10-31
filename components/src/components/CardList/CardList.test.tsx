@@ -3,8 +3,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { act, render, screen } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
 import CardList from '.';
-// import { cards } from 'Constants';
-// надо изменить
 
 test('render cardList', async () => {
   await act(() => {
