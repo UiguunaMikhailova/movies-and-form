@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { Context } from 'Context';
+import { movieDefaultPoster } from 'Constants';
 import './CardElement.css';
 
 export default function CardElement() {
@@ -15,7 +16,14 @@ export default function CardElement() {
         <div className="modal">
           <div className="modal__card">
             <div className="modal__image">
-              <img src={`https://image.tmdb.org/t/p/w500${card.poster_path}`} alt="poster" />
+              <img
+                src={
+                  card.poster_path === null
+                    ? movieDefaultPoster
+                    : `https://image.tmdb.org/t/p/w500${card.poster_path}`
+                }
+                alt="poster"
+              />
             </div>
             <div className="modal__content">
               <div className="modal__title">{card.title}</div>
