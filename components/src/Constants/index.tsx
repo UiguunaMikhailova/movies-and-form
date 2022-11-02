@@ -12,6 +12,9 @@ for (let i = 20; i >= 1; i -= 1) {
   moviesCountArray.push(i);
 }
 
+const errorMessage =
+  'Unfortunately, "The Movie Database (TMDB) API" does not work in Russia, so it is not possible to download data. Please connect your device to VPN.';
+
 const cards = [
   {
     overview:
@@ -285,4 +288,5 @@ export {
   COUNTRIES,
   movieDefaultPoster,
   moviesCountArray,
+  errorMessage,
 };

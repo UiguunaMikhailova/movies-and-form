@@ -21,7 +21,7 @@ export default function Home() {
     });
 
     getData(`${url}&page=${pageNumber}`).then((data) => {
-      if (data) {
+      if (data.results) {
         const cutMovies = data.results.slice(0, count);
         context.dispatch({
           type: ACTIONTYPE.SETCARDS,

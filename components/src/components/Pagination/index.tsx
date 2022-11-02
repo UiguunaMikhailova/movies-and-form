@@ -20,7 +20,10 @@ export default function Pagination({ searchCards }: SearchProps) {
   }
 
   function goToPage(e: React.KeyboardEvent<HTMLInputElement>) {
-    paginate(Number(e.currentTarget.value));
+    const pageNumber = Number(e.currentTarget.value);
+    if (pageNumber <= totalPages) {
+      paginate(pageNumber);
+    }
     e.currentTarget.value = '';
   }
 
