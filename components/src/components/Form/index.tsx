@@ -1,22 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { formSlice } from 'store/reducers/FormSlice';
 import { COUNTRIES } from 'Constants';
-import { Context } from 'Context';
-import { ACTIONTYPE, CardForm, FormInputs } from 'types';
+import { CardForm, FormInputs } from 'types';
 import './Form.css';
 
 export default function Form() {
-  const context = useContext(Context);
-  const {
-    isSavingForm,
-    formCards,
-    formName,
-    formSurname,
-    formDate,
-    formGender,
-    formCountry,
-    formCheckbox,
-  } = context.state;
+  const { isSavingForm, formName, formSurname, formDate, formGender, formCountry, formCheckbox } =
+    useAppSelector((state) => state.FormSlice);
+
+  const dispatch = useAppDispatch();
+  const { setFormInputs, toggleIsSaveForm, addFormCard } = formSlice.actions;
 
   const {
     register,
@@ -28,19 +23,10 @@ export default function Form() {
   } = useForm<FormInputs>({ mode: 'onChange' });
 
   React.useEffect(() => {
-    watch((value) =>
-      context.dispatch({
-        type: ACTIONTYPE.SETFORM,
-        payload: {
-          formName: value.name,
-          formSurname: value.surname,
-          formDate: value.date,
-          formCountry: value.country,
-          formGender: value.gender,
-          formCheckbox: value.checkbox,
-        },
-      })
-    );
+    watch((value) => {
+      const { name, surname, date, country, gender, checkbox } = value;
+      dispatch(setFormInputs({ name, surname, date, country, gender, checkbox } as FormInputs));
+    });
   }, [watch]);
 
   const onSubmit = (data: FormInputs) => {
@@ -49,7 +35,7 @@ export default function Form() {
       surname: data.surname,
       date: data.date,
       country: data.country,
-      file: URL.createObjectURL(data.file[0]),
+      file: URL.createObjectURL(data.file![0]),
       gender: data.gender,
     });
     reset();
@@ -57,10 +43,10 @@ export default function Form() {
   };
 
   function updateCards(card: CardForm) {
-    context.dispatch({ type: ACTIONTYPE.SETFORM, payload: { isSavingForm: true } });
+    dispatch(toggleIsSaveForm(true));
     setTimeout(() => {
-      context.dispatch({ type: ACTIONTYPE.SETFORM, payload: { isSavingForm: false } });
-      context.dispatch({ type: ACTIONTYPE.SETFORM, payload: { formCards: [...formCards, card] } });
+      dispatch(toggleIsSaveForm(false));
+      dispatch(addFormCard(card));
     }, 1000);
   }
 

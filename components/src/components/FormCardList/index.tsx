@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useAppSelector } from 'hooks/redux';
 import FormCard from 'Components/FormCard';
-import { Context } from 'Context';
 import './FormCardList.css';
 
 export default function FormCardList() {
-  const context = useContext(Context);
-  const { formCards } = context.state;
+  const { formCards } = useAppSelector((state) => state.FormSlice);
 
   return (
     <ul role="formCardList" className="form-card-list">
