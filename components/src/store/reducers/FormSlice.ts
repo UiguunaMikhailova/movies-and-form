@@ -24,6 +24,14 @@ export const formSlice = createSlice({
       state.formGender = action.payload.gender;
       state.formCheckbox = action.payload.checkbox;
     },
+    resetFormInputs(state) {
+      state.formName = '';
+      state.formSurname = '';
+      state.formDate = '';
+      state.formCountry = '';
+      state.formGender = '';
+      state.formCheckbox = false;
+    },
     toggleIsSaveForm(state, action: PayloadAction<boolean>) {
       state.isSavingForm = action.payload;
     },

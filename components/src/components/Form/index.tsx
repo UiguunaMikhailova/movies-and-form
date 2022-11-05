@@ -11,7 +11,7 @@ export default function Form() {
     useAppSelector((state) => state.FormSlice);
 
   const dispatch = useAppDispatch();
-  const { setFormInputs, toggleIsSaveForm, addFormCard } = formSlice.actions;
+  const { setFormInputs, toggleIsSaveForm, addFormCard, resetFormInputs } = formSlice.actions;
 
   const {
     register,
@@ -38,6 +38,7 @@ export default function Form() {
       file: URL.createObjectURL(data.file![0]),
       gender: data.gender,
     });
+    dispatch(resetFormInputs());
     reset();
     setValue('checkbox', false);
   };
