@@ -1,11 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-import { Data } from '../../types';
+import { getData } from 'Requests';
 
 export const fetchData = createAsyncThunk('movie/fetchAll', async (url: string, thunkAPI) => {
   try {
-    const response = await axios.get<Data>(url);
-    return response.data;
+    const result = getData(url);
+    return result;
   } catch (e) {
     return thunkAPI.rejectWithValue((e as Error).message);
   }

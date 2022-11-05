@@ -59,7 +59,7 @@ describe('Form', () => {
         target: { value: 'harry potter' },
       });
     });
-    // expect(name).toHaveValue('harry potter');
+    expect(name).toHaveValue('harry potter');
   });
 
   test('upload file', async () => {
