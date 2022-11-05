@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
-import { Context } from 'Context';
+import { useAppSelector } from 'hooks/redux';
 import { movieDefaultPoster } from 'Constants';
 import './CardElement.css';
 
 export default function CardElement() {
-  const context = useContext(Context);
+  const { movies } = useAppSelector((state) => state.MovieSlice);
   const { id } = useParams();
   const navigate = useNavigate();
-  const card = context.state.movies[Number(id)];
+  const card = movies[Number(id)];
 
   return (
     <>

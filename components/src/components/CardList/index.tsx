@@ -1,18 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Card from 'Components/Card';
-import { Context } from 'Context';
+import { useAppSelector } from 'hooks/redux';
 import { CardProps } from 'types';
+import { errorMessage } from 'Constants';
 import './CardList.css';
 
 export default function CardList() {
-  const context = useContext(Context);
-  const { movies, isLoading } = context.state;
+  const { movies, isLoading, error } = useAppSelector((state) => state.MovieSlice);
 
   return (
     <div role="cardList">
-      {isLoading ? (
-        <div className="loading">Loading</div>
-      ) : movies.length ? (
+      {isLoading && <div className="loading">Loading</div>}
+      {error && <div className="info">{errorMessage}</div>}
+      {movies.length ? (
         <div>
           <ul className="films">
             {movies.map((item: CardProps, index: number) => (
@@ -28,8 +28,10 @@ export default function CardList() {
             ))}
           </ul>
         </div>
+      ) : error ? (
+        <></>
       ) : (
-        <div className="no-cards">Sorry, no movies were found by the request</div>
+        <div className="info">Sorry, no movies were found by the request</div>
       )}
     </div>
   );

@@ -1,17 +1,19 @@
-import React, { useContext } from 'react';
-import { Context } from 'Context';
-import { ACTIONTYPE, SearchProps } from 'types';
+import React from 'react';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { movieSlice } from 'store/reducers/MovieSlice';
+import { SearchProps } from 'types';
 import { popularUrl, searchUrl } from 'Constants';
 import './Pagination.css';
 
 export default function Pagination({ searchCards }: SearchProps) {
-  const context = useContext(Context);
+  const { searchValue, totalPages, page } = useAppSelector((state) => state.MovieSlice);
+  const dispatch = useAppDispatch();
+  const { setPageValue } = movieSlice.actions;
 
-  const { searchValue, totalPages } = context.state;
-  const currPage = context.state.page;
+  const currPage = page;
 
   function paginate(pageNumber: number) {
-    context.dispatch({ type: ACTIONTYPE.SETCARDS, payload: { page: pageNumber } });
+    dispatch(setPageValue(pageNumber));
     if (searchValue.length) {
       searchCards(`${searchUrl}${searchValue}`, pageNumber);
     } else {

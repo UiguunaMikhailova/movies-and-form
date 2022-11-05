@@ -1,50 +1,26 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { fetchData } from 'store/reducers/ActionCreators';
 import Layout from 'Components/Layout';
 import Search from 'Components/Search';
 import CardList from 'Components/CardList';
 import Pagination from 'Components/Pagination';
 import Sort from 'Components/Sort';
-import { Context } from 'Context';
-import { getData } from 'Requests';
-import { sortItems } from 'Helpers';
-import { ACTIONTYPE } from 'types';
 import './home.css';
 
 export default function Home() {
-  const context = useContext(Context);
-  const { page, sort, moviesCount } = context.state;
+  const { page } = useAppSelector((state) => state.MovieSlice);
+  const dispatch = useAppDispatch();
 
-  function searchCards(url: string, pageNumber = page, sortString = sort, count = moviesCount) {
-    context.dispatch({
-      type: ACTIONTYPE.SETCARDS,
-      payload: { movies: [], isLoading: true, page: pageNumber },
-    });
-
-    getData(`${url}&page=${pageNumber}`).then((data) => {
-      if (data.results) {
-        const cutMovies = data.results.slice(0, count);
-        context.dispatch({
-          type: ACTIONTYPE.SETCARDS,
-          payload: {
-            movies: sortItems(sortString, cutMovies),
-            isLoading: false,
-            totalPages: data.total_pages,
-          },
-        });
-      } else {
-        context.dispatch({
-          type: ACTIONTYPE.SETCARDS,
-          payload: { movies: [], isLoading: true },
-        });
-      }
-    });
+  function searchCards(url: string, pageNumber = page) {
+    dispatch(fetchData(`${url}&page=${pageNumber}`));
   }
 
   return (
     <Layout>
       <div className="home" role="homePage">
         <Search searchCards={searchCards} />
-        <Sort searchCards={searchCards} />
+        <Sort />
         <CardList />
         <Pagination searchCards={searchCards} />
       </div>

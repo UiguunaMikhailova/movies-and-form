@@ -1,13 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Context } from 'Context';
+import { useAppSelector } from 'hooks/redux';
 import { movieDefaultPoster } from 'Constants';
 import { CardProps } from 'types';
 import './Card.css';
 
 export default function Card({ id, title, poster_path, vote_average, vote_count }: CardProps) {
-  const context = useContext(Context);
-  const { page } = context.state;
+  const { page } = useAppSelector((state) => state.MovieSlice);
 
   return (
     <Link to={`movies/page=${page}&id=${id}`} className="movie" role="card">

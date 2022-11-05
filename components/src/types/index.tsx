@@ -1,9 +1,11 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
-enum ACTIONTYPE {
-  SETCARDS = 'setCards',
-  SETFORM = 'setForm',
-}
+type Data = {
+  page: number;
+  results: CardProps[];
+  total_pages: number;
+  total_results: number;
+};
 
 type CardProps = {
   key?: number;
@@ -16,7 +18,7 @@ type CardProps = {
 };
 
 type SearchProps = {
-  searchCards: (value: string, page?: number, sort?: string, count?: number) => void;
+  searchCards: (value: string, page?: number) => void;
 };
 
 type CardForm = {
@@ -35,7 +37,7 @@ type FormInputs = {
   date: string;
   country: string;
   gender: string;
-  file: FileList;
+  file?: FileList;
   checkbox: boolean;
 };
 
@@ -43,16 +45,20 @@ type LayoutProps = {
   children: ReactNode;
 };
 
-type State = {
+type MovieState = {
   movies: CardProps[];
   isLoading: boolean;
+  error: string;
   searchValue: string;
-  formCards: CardForm[];
-  isSavingForm: boolean;
   page: number;
   totalPages: number;
   sort: string;
   moviesCount: number;
+};
+
+type FormState = {
+  formCards: CardForm[];
+  isSavingForm: boolean;
   formName: string;
   formSurname: string;
   formDate: string;
@@ -61,24 +67,4 @@ type State = {
   formCheckbox: boolean;
 };
 
-type Action = {
-  type: string;
-  payload: Partial<State>;
-};
-
-type TContext = {
-  state: State;
-  dispatch: React.Dispatch<Action>;
-};
-
-export {
-  CardProps,
-  SearchProps,
-  CardForm,
-  LayoutProps,
-  FormInputs,
-  State,
-  Action,
-  TContext,
-  ACTIONTYPE,
-};
+export { CardProps, SearchProps, CardForm, LayoutProps, FormInputs, MovieState, FormState, Data };

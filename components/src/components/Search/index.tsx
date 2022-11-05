@@ -1,12 +1,14 @@
-import React, { useContext, useEffect } from 'react';
-import { Context } from 'Context';
-import { ACTIONTYPE, SearchProps } from 'types';
+import React, { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { movieSlice } from 'store/reducers/MovieSlice';
+import { SearchProps } from 'types';
 import { popularUrl, searchUrl } from 'Constants';
 import './Search.css';
 
 export default function Search({ searchCards }: SearchProps) {
-  const context = useContext(Context);
-  const { searchValue } = context.state;
+  const { searchValue } = useAppSelector((state) => state.MovieSlice);
+  const dispatch = useAppDispatch();
+  const { setSearchValue } = movieSlice.actions;
 
   useEffect(() => {
     if (searchValue.length) {
@@ -25,7 +27,7 @@ export default function Search({ searchCards }: SearchProps) {
       autoFocus
       value={searchValue}
       onChange={(e) => {
-        context.dispatch({ type: ACTIONTYPE.SETCARDS, payload: { searchValue: e.target.value } });
+        dispatch(setSearchValue(e.target.value));
       }}
       onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
         e.key === 'Enter' &&

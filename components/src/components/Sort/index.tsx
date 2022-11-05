@@ -1,45 +1,22 @@
-import React, { useContext } from 'react';
-import { Context } from 'Context';
-import { ACTIONTYPE, SearchProps } from 'types';
-import { moviesCountArray, popularUrl, searchUrl } from 'Constants';
+import React from 'react';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { movieSlice } from 'store/reducers/MovieSlice';
+import { moviesCountArray } from 'Constants';
 import './Sort.css';
 
-export default function Sort({ searchCards }: SearchProps) {
-  const context = useContext(Context);
-  const { searchValue, page, sort, moviesCount } = context.state;
-
-  function sortMovies(e: React.ChangeEvent<HTMLSelectElement>) {
-    context.dispatch({
-      type: ACTIONTYPE.SETCARDS,
-      payload: { sort: e.currentTarget.value },
-    });
-
-    if (searchValue.length) {
-      searchCards(`${searchUrl}${searchValue}`, page, e.currentTarget.value);
-    } else {
-      searchCards(`${popularUrl}`, page, e.currentTarget.value);
-    }
-  }
-
-  function setMoviesCount(e: React.ChangeEvent<HTMLSelectElement>) {
-    context.dispatch({
-      type: ACTIONTYPE.SETCARDS,
-      payload: { moviesCount: Number(e.currentTarget.value) },
-    });
-
-    if (searchValue.length) {
-      searchCards(`${searchUrl}${searchValue}`, page, sort, Number(e.currentTarget.value));
-    } else {
-      searchCards(`${popularUrl}`, page, sort, Number(e.currentTarget.value));
-    }
-  }
+export default function Sort() {
+  const { sort, moviesCount } = useAppSelector((state) => state.MovieSlice);
+  const dispatch = useAppDispatch();
+  const { setSortValue, setCountValue } = movieSlice.actions;
 
   return (
     <div className="sort">
       <select
         className="sort__select"
         value={sort}
-        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => sortMovies(e)}
+        onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+          dispatch(setSortValue(e.currentTarget.value))
+        }
       >
         <option value="default">Select sort</option>
         <optgroup label="Title">
@@ -59,7 +36,9 @@ export default function Sort({ searchCards }: SearchProps) {
       <select
         className="sort__select"
         value={moviesCount}
-        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setMoviesCount(e)}
+        onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+          dispatch(setCountValue(Number(e.currentTarget.value)))
+        }
       >
         {moviesCountArray.map((number) => (
           <option value={number} key={number}>
