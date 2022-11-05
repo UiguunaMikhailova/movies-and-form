@@ -3,13 +3,19 @@ import { BrowserRouter } from 'react-router-dom';
 import { act, render } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
 import CardList from '.';
+import { setupStore } from 'store/store';
+import { Provider } from 'react-redux';
+
+const store = setupStore();
 
 test('render cardList', async () => {
   await act(() => {
     render(
-      <BrowserRouter>
-        <CardList />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <CardList />
+        </BrowserRouter>
+      </Provider>
     );
   });
 

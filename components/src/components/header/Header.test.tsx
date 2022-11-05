@@ -3,12 +3,18 @@ import { BrowserRouter } from 'react-router-dom';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
 import App from 'App';
+import { Provider } from 'react-redux';
+import { setupStore } from 'store/store';
+
+const store = setupStore();
 
 test('Render header', async () => {
   render(
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   );
 
   const header = screen.getByRole('header');

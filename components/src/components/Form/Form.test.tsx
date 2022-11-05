@@ -1,4 +1,6 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import { setupStore } from 'store/store';
 import { BrowserRouter } from 'react-router-dom';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -6,14 +8,17 @@ import '@testing-library/react/dont-cleanup-after-each';
 import Form from '.';
 
 global.URL.createObjectURL = jest.fn();
+const store = setupStore();
 
 describe('Form', () => {
   beforeEach(async () => {
     await act(async () => {
       render(
-        <BrowserRouter>
-          <Form />
-        </BrowserRouter>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Form />
+          </BrowserRouter>
+        </Provider>
       );
     });
   });

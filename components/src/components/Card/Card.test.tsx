@@ -1,24 +1,30 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import { setupStore } from 'store/store';
 import { BrowserRouter } from 'react-router-dom';
 import { act, render, screen } from '@testing-library/react';
 import '@testing-library/react/dont-cleanup-after-each';
 import Card from '.';
 import { card } from 'Constants';
 
+const store = setupStore();
+
 test('render card', async () => {
   await act(() => {
     render(
-      <BrowserRouter>
-        <Card
-          key={0}
-          id={0}
-          title={card.title}
-          poster_path={card.poster_path}
-          vote_average={card.vote_average}
-          vote_count={card.vote_count}
-          overview={card.overview}
-        />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Card
+            key={0}
+            id={0}
+            title={card.title}
+            poster_path={card.poster_path}
+            vote_average={card.vote_average}
+            vote_count={card.vote_count}
+            overview={card.overview}
+          />
+        </BrowserRouter>
+      </Provider>
     );
   });
 

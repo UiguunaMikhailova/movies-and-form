@@ -5,17 +5,23 @@ import '@testing-library/react/dont-cleanup-after-each';
 // import Home from 'Components/pages/home';
 import Search from '.';
 import Header from 'Components/Header';
+import { setupStore } from 'store/store';
+import { Provider } from 'react-redux';
 // import * as API from '../../Requests';
 // import { cards } from '../../Constants';
+
+const store = setupStore();
 
 describe('search component', () => {
   test('render search', async () => {
     await act(async () => {
       render(
-        <BrowserRouter>
-          <Header />
-          <Search searchCards={() => {}} />
-        </BrowserRouter>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Header />
+            <Search searchCards={() => {}} />
+          </BrowserRouter>
+        </Provider>
       );
     });
 
