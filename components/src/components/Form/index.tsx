@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { formSlice } from 'store/reducers/FormSlice';
@@ -22,7 +22,7 @@ export default function Form() {
     formState: { errors, isDirty },
   } = useForm<FormInputs>({ mode: 'onChange' });
 
-  React.useEffect(() => {
+  useEffect(() => {
     watch((value) => {
       const { name, surname, date, country, gender, checkbox } = value;
       dispatch(setFormInputs({ name, surname, date, country, gender, checkbox } as FormInputs));
